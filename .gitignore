@@ -1,0 +1,8 @@
+.DS_Store
+.parcel-cache
+.vscode
+artifact
+dist
+logs
+node_modules
+vendor

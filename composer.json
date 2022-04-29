@@ -1,0 +1,17 @@
+{   
+    "scripts": {
+        "lint" : "mkdir -p logs; vendor/bin/phpcs -s > ./logs/log.txt",
+        "format": "vendor/bin/phpcbf -p",
+        "dist":  "sh bin/dist.sh"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "0.7.1",
+        "wp-coding-standards/wpcs": "2.3",
+        "suin/phpcs-psr4-sniff": "^3.0"
+    },
+    "autoload":{
+        "psr-4": {
+            "Root\\" : "includes/"
+        }
+    }
+}

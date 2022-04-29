@@ -1,0 +1,45 @@
+{
+  "name": "Root",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^2.0.0-rc.0",
+    "prettier": "2.5.1",
+    "husky": "^7.0.0"
+  },
+  "scripts": {
+    "dev": "parcel watch --no-hmr",
+    "build": "parcel build",
+    "format": "prettier --write ./assets/**/* --no-error-on-unmatched-pattern",
+    "prepare": "husky install"
+  },
+  "targets": {
+    "public": {
+      "source": [
+        "./assets/public/js/prefix-public.js"
+      ],
+      "sourceMap": false,
+      "distDir": "./assets/public/js/build/"
+    },
+    "admin": {
+      "source": [
+        "./assets/admin/js/prefix-admin.js"
+      ],
+      "sourceMap": false,
+      "distDir": "./assets/admin/js/build/"
+    }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "outputFormat": "global",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "author",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
