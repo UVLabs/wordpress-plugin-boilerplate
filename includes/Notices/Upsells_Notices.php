@@ -3,7 +3,7 @@
 /**
 * Class responsible for upsell notices.
 *
-* Author:          author
+* Author:          author_name
 *
 * @link    author_url
 * @since   1.0.0

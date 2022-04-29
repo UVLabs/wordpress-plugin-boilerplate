@@ -2,7 +2,7 @@
 /**
 * Load Notices to admin notices hook.
 *
-* Author:          author
+* Author:          author_name
 *
 * @link    author_url
 * @since   1.0.0

@@ -24,7 +24,7 @@
  * @since      1.0.0
  * @package    Root
  * @subpackage Root/includes
- * @author     author <author_email>
+ * @author_name     author_name <author_email>
  */
 namespace Root\Bootstrap;
 

@@ -7,7 +7,7 @@
  * @since      1.0.0
  *
  * @package    Root
- * @author     author <author_email>
+ * @author_name     author_name <author_email>
  *
  */
 namespace Root\Bootstrap;

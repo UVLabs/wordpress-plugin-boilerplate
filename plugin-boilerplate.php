@@ -17,7 +17,7 @@
  * Plugin URI:
  * Description:       Plugin Description
  * Version:           1.0.0
- * Author:            author
+ * Author:            author_name
  * Author URI:        author_url
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt

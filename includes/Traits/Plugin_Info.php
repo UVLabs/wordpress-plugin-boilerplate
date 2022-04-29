@@ -3,7 +3,7 @@
 /**
 * Trait which holds information about the PREFIX plugin.
 *
-* Author:          author
+* Author:          author_name
 *
 * @link    author_url
 * @since   1.0.0

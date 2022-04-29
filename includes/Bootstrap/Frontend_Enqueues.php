@@ -16,7 +16,7 @@
  * enqueue the public-facing stylesheet and JavaScript.
  *
  * @package    Root
- * @author     author <author_email>
+ * @author_name     author_name <author_email>
  */
 namespace Root\Bootstrap;
 
