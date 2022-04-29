@@ -86,7 +86,7 @@ class Notice {
 		$dismiss_text = esc_html__( 'Dismiss', 'text-domain' );
 
 		$markup = <<<HTML
-
+<!-- TODO Add styles for this notice logo -->
 			<div class="update-nag prefix-admin-notice">
 			<div class="prefix-notice-logo"></div> 
 			<p class="prefix-notice-title">$title</p> 

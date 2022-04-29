@@ -6,11 +6,22 @@ Original boilerplate code was made with https://wppb.me/, but changes made to ac
 
 There might be more replacements to be done to get all dummy text changed but I've tried to list all of them below. Feel free to submit a pull request for any changes.
 
-Replacements:
+
+### Steps
+
+#### Composer
+
+Run `composer install`
+
+#### NPM
+
+Run `npm install`
+
+#### Replacements:
 
 - Add relevant info to package.json
 
-Exact match replacements (case sensitive):
+#### Exact match replacements (case sensitive):
 
 - Replace 'our_plugin_name' with Plugin name
 - Replace 'text-domain' with plugin text domain
