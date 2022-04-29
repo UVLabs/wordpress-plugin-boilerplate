@@ -8,7 +8,6 @@
  * that starts the plugin.
  *
  * @link              author_url
- * @link
  * @since             1.0.0
  * @package           Root
  *
