@@ -27,6 +27,7 @@ Run `npm install`
 - Replace 'text-domain' with plugin text domain
 - Replace 'PREFIX' with a prefix for constants
 - Replace 'prefix' with a lowercase version of the plugin name example wcdpue, prefix etc
+- Replace 'root' with a lowercase version of the plugin name example wcdpue, prefix etc
 - Replace 'root' in file name for activator and deactivator with a lowercase version of the plugin name example wcdpue, prefix etc
 - Replace 'Root' with a shortname for plugin example Wcdpue, Root etc 
 - Replace 'author' with plugin author name,
