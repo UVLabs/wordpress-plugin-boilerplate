@@ -96,6 +96,8 @@ if ( function_exists( 'wp_get_environment_type' ) ) {
 	}
 }
 
+define( 'LPAC_DEBUG', $debug );
+
 use Root\Bootstrap\Main as Plugin;
 $plugin = Plugin::get_instance();
 $plugin->run();

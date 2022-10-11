@@ -102,9 +102,6 @@ class Main {
 	 * @since    1.0.0
 	 */
 	private function __construct() {
-		if ( ! defined( 'ABSPATH' ) ) {
-			exit;
-		}
 		$this->version = PREFIX_VERSION;
 
 		$this->plugin_name = PREFIX_PLUGIN_NAME;
@@ -160,7 +157,7 @@ class Main {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		$this->loader->add_filter( 'plugin_action_links', $this, 'add_plugin_action_links', 999999, 2 );
+		$this->loader->add_filter( 'plugin_action_links', $this, 'add_plugin_action_links', PHP_INT_MAX, 2 );
 	}
 
 	/**
