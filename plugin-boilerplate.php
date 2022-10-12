@@ -7,17 +7,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              author_url
+ * @link              plugin_author_url
  * @since             1.0.0
  * @package           Root
  *
  * @wordpress-plugin
- * Plugin Name:       Plugin Name
+ * Plugin Name:       our_plugin_name
  * Plugin URI:
  * Description:       Plugin Description
  * Version:           1.0.0
- * Author:            author_name
- * Author URI:        author_url
+ * Author:            plugin_author_name
+ * Author URI:        plugin_author_url
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires PHP: 7.3
@@ -96,7 +96,7 @@ if ( function_exists( 'wp_get_environment_type' ) ) {
 	}
 }
 
-define( 'LPAC_DEBUG', $debug );
+define( 'PREFIX_DEBUG', $debug );
 
 use Root\Bootstrap\Main as Plugin;
 $plugin = Plugin::get_instance();

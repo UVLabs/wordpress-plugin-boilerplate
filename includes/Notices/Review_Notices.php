@@ -5,9 +5,9 @@
 *
 * Notices to review the plugin.
 *
-* Author:          author_name
+* Author:          plugin_author_name
 *
-* @link    author_url
+* @link    plugin_author_url
 * @since   1.0.0
 * @package Notices
 */
@@ -53,7 +53,7 @@ class Review_Notices extends Notice {
 
 		$content = array(
 			'title' => __( 'Has our_plugin_name Helped You?', 'text-domain' ),
-			'body'  => __( 'Hey! its author_name, Sole Developer working on our_plugin_name. Has the plugin benefitted your website? If yes, then would you mind taking a few seconds to leave a kind review? Reviews go a long way and they really help keep me motivated to continue working on the plugin and making it better.', 'text-domain' ),
+			'body'  => __( 'Hey! its plugin_author_name, Sole Developer working on our_plugin_name. Has the plugin benefitted your website? If yes, then would you mind taking a few seconds to leave a kind review? Reviews go a long way and they really help keep me motivated to continue working on the plugin and making it better.', 'text-domain' ),
 			'cta'   => __( 'Sure!', 'text-domain' ),
 			'link'  => 'https://wordpress.org/support/plugin/text-domain/reviews/#new-post',
 		);

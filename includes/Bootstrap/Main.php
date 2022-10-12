@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       author_url
+ * @link       plugin_author_url
  * @since      1.0.0
  *
  * @package    Root
@@ -24,7 +24,7 @@
  * @since      1.0.0
  * @package    Root
  * @subpackage Root/includes
- * @author_name     author_name <author_email>
+ * @author_name     plugin_author_name <plugin_author_email>
  */
 namespace Root\Bootstrap;
 
