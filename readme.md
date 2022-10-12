@@ -21,14 +21,28 @@ Run `npm install`
 
 - Add relevant info to package.json
 
-#### Search and replaces (case sensitive):
+#### Search and replaces (all are case sensitive):
 
-- Replace 'our_plugin_name' with Plugin name
-- Replace 'text-domain' with plugin text domain
-- Replace 'PREFIX' with a prefix for constants
-- Replace 'prefix' with a lowercase version of the plugin name example `myplugin` etc. USE UNDERSCORES for the sparation example `my_plugin`
-- Replace 'prefix' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name example wcdpue, prefix etc
+- Replace 'our_plugin_name' with Plugin name (exact match [whole word])
+
+- Replace 'text-domain' with plugin text domain (exact match [whole word])
+
+- Replace 'PREFIX' with a prefix for constants (loose match)
+
+- Replace 'prefix_' with a lowercase version of the plugin name example `_myplugin` etc. USE UNDERSCORES for the sparation example `_my_plugin` (loose match)
+
+- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word])
+
+- Replace 'prefix' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
+
+- Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
+
+- Replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
+
 - Replace 'Root' with a shortname for plugin example `Myplugin` etc (You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.)
-- Replace 'plugin_author_name' with your name name,
-- Replace 'plugin_author_url' with your website,
-- Replace 'plugin_author_email' with your email address
+
+- Replace 'plugin_author_name' with your name name, (exact match [whole word])
+
+- Replace 'plugin_author_url' with your website, (exact match [whole word])
+
+- Replace 'plugin_author_email' with your email address (exact match [whole word])
