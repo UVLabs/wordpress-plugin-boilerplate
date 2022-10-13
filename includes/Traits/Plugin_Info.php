@@ -3,9 +3,9 @@
 /**
 * Trait which holds information about the PREFIX plugin.
 *
-* Author:          author_name
+* Author:          plugin_author_name
 *
-* @link    author_url
+* @link    plugin_author_url
 * @since   1.0.0
 * @package Notices
 */

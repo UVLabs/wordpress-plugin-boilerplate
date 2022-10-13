@@ -3,11 +3,11 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       author_url
+ * @link       plugin_author_url
  * @since      1.0.0
  *
  * @package    Root
- * @author_name     author_name <author_email>
+ * @author_name     plugin_author_name <plugin_author_email>
  *
  */
 namespace Root\Bootstrap;

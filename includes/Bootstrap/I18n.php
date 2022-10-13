@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       author_url
+ * @link       plugin_author_url
  * @since      1.0.0
  *
  * @package    Root
@@ -20,7 +20,7 @@
  *
  * @since      1.0.0
  * @package    Root
- * @author_name     author_name <author_email>
+ * @author_name     plugin_author_name <plugin_author_email>
  */
 namespace Root\Bootstrap;
 

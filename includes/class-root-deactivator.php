@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       author_url
+ * @link       plugin_author_url
  * @since      1.0.0
  *
  * @package    Root
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since      1.0.0
  * @package    Root
  * @subpackage Root/includes
- * @author_name     author_name <author_email>
+ * @author_name     plugin_author_name <plugin_author_email>
  */
 class Root_Deactivator {
 

@@ -5,7 +5,7 @@
 *
 * Houses all the notices to show in admin dashboard.
 *
-* @link    author_url
+* @link    plugin_author_url
 * @since    1.0.0
 *
 * @package    Root
