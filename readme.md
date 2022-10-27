@@ -23,7 +23,9 @@ Run `npm install`
 
 #### Search and replaces (all are case sensitive):
 
-- Replace 'our_plugin_name' with Plugin name (exact match [whole word])
+- Replace 'my_plugin_name' with the Plugin name example Awesome WordPress Plugin (exact match [whole word])
+
+- Replace 'my_plugin_shortname' with a short lowercase version of the plugin name example awesomewpplugin (exact match [whole word])
 
 - Replace 'text-domain' with plugin text domain (exact match [whole word])
 
@@ -39,7 +41,7 @@ Run `npm install`
 
 - Replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
 
-- Replace 'Root' with a shortname for plugin example `Myplugin` etc (You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.)
+- Replace 'Root' with a shortname for plugin example `Myplugin`. This is used as your namespace prefix. (You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.) (loose match)
 
 - Replace 'plugin_author_name' with your name name, (exact match [whole word])
 

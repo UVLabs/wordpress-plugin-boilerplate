@@ -12,7 +12,7 @@
  * @package           Root
  *
  * @wordpress-plugin
- * Plugin Name:       our_plugin_name
+ * Plugin Name:       my_plugin_name
  * Plugin URI:
  * Description:       Plugin Description
  * Version:           1.0.0
@@ -21,6 +21,7 @@
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires PHP: 7.3
+ * Text Domain:       text-domain
  */
 
 if ( ! defined( 'WPINC' ) ) {
@@ -81,7 +82,7 @@ if ( defined( 'PHP_VERSION' ) ) {
 }
 
 define( 'PREFIX_BASE_FILE', basename( plugin_dir_path( __FILE__ ) ) );
-define( 'PREFIX_PLUGIN_NAME', 'our_plugin_name' );
+define( 'PREFIX_PLUGIN_NAME', 'my_plugin_shortname' );
 define( 'PREFIX_PLUGIN_DIR', __DIR__ . '/' );
 define( 'PREFIX_PLUGIN_ASSETS_DIR', __DIR__ . '/assets/' );
 define( 'PREFIX_PLUGIN_ASSETS_PATH_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
