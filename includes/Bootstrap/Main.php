@@ -36,6 +36,7 @@ use Root\Bootstrap\Loader;
 use Root\Bootstrap\I18n;
 use Root\Bootstrap\Admin_Enqueues;
 use Root\Bootstrap\Frontend_Enqueues;
+use Root\Bootstrap\Setup_Cron;
 
 /**
 * Class Main.
@@ -122,9 +123,7 @@ class Main {
 	 * @access   private
 	 */
 	private function load_dependencies() {
-
 		$this->loader = new Loader();
-
 	}
 
 	/**
@@ -152,12 +151,16 @@ class Main {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-		$plugin_admin = new Admin_Enqueues();
+		$plugin_admin         = new Admin_Enqueues();
+		$bootstrap_cron_setup = new Setup_Cron();
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		$this->loader->add_filter( 'plugin_action_links', $this, 'add_plugin_action_links', PHP_INT_MAX, 2 );
+
+		// Cron tasks.
+		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'set_cron_tasks' );
 	}
 
 	/**
