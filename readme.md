@@ -35,11 +35,11 @@ Run `npm install`
 
 - Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word])
 
-- Replace 'prefix' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
+- Replace 'root' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
 
 - Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
 
-- Replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
+- Open `dist.sh` in the `bin` folder and replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
 
 - Replace 'Root' with a shortname for plugin example `Myplugin`. This is used as your namespace prefix. (You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.) (loose match)
 

@@ -5,7 +5,6 @@
 # Start fresh
 rm -rf dist
 rm -rf artifact
-rm prefix.zip
 
 # Make our directories
 mkdir -p dist

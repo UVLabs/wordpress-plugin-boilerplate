@@ -1,15 +1,15 @@
 <?php
 
 /**
-* Admin Notices.
-*
-* Houses all the notices to show in admin dashboard.
-*
-* @link    plugin_author_url
-* @since    1.0.0
-*
-* @package    Root
-*/
+ * Admin Notices.
+ *
+ * Houses all the notices to show in admin dashboard.
+ *
+ * @link    plugin_author_url
+ * @since    1.0.0
+ *
+ * @package    Root
+ */
 namespace Root\Notices;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,13 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Admin {
 
 	/**
-	* Detect if WooCommerce is active.
-	*
-	* Plugin runs off WooCommerce so requires WooCommerce to be active.
-	*
-	* @since    1.0.0
-	*
-	*/
+	 * Detect if WooCommerce is active.
+	 *
+	 * Plugin runs off WooCommerce so requires WooCommerce to be active.
+	 *
+	 * @since    1.0.0
+	 */
 	public function wc_not_active_notice() {
 
 		if ( ! class_exists( 'woocommerce' ) ) {
@@ -44,10 +43,10 @@ class Admin {
 	}
 
 	/**
-	* Detect if site has HTTPS support.
-	*
-	* @since    1.0.0
-	*/
+	 * Detect if site has HTTPS support.
+	 *
+	 * @since    1.0.0
+	 */
 	public function site_not_https() {
 
 		if ( is_ssl() ) {

@@ -39,11 +39,10 @@ use Root\Bootstrap\Frontend_Enqueues;
 use Root\Bootstrap\Setup_Cron;
 
 /**
-* Class Main.
-*
-* Class responsible for firing public and admin hooks.
-*
-*/
+ * Class Main.
+ *
+ * Class responsible for firing public and admin hooks.
+ */
 class Main {
 
 	/**
@@ -76,6 +75,7 @@ class Main {
 
 	/**
 	 * Plugin instance
+	 *
 	 * @var mixed
 	 */
 	private static $instance;
@@ -129,7 +129,7 @@ class Main {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Root_i18n class in order to set the domain and to register the hook
+	 * Uses the i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -171,7 +171,7 @@ class Main {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
-		$plugin_public = new Frontend_Enqueues;
+		$plugin_public = new Frontend_Enqueues();
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -201,7 +201,7 @@ class Main {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Root_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -219,7 +219,8 @@ class Main {
 
 	/**
 	 * Add action Links for plugin
-	 * @param array $plugin_actions
+	 *
+	 * @param array  $plugin_actions
 	 * @param string $plugin_file
 	 * @return array
 	 */

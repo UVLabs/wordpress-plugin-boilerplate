@@ -1,13 +1,13 @@
 <?php
 /**
-* Class responsible for creating notices markup.
-*
-* Author:          plugin_author_name
-*
-* @link    plugin_author_url
-* @since   1.0.0
-* @package Notices
-*/
+ * Class responsible for creating notices markup.
+ *
+ * Author:          plugin_author_name
+ *
+ * @link    plugin_author_url
+ * @since   1.0.0
+ * @package Notices
+ */
 namespace Root\Notices;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
-* Class Notice.
-*/
+ * Class Notice.
+ */
 class Notice {
 
 	/**
@@ -30,6 +30,7 @@ class Notice {
 
 	/**
 	 * Get the notice ids that have been dismissed by user.
+	 *
 	 * @return mixed
 	 */
 	private function get_dismissed_notices() {
@@ -38,13 +39,14 @@ class Notice {
 
 	/**
 	 * Create the dismiss URL for a notice.
+	 *
 	 * @param string $notice_id The ID of the particular notice.
 	 * @return string
 	 */
 	protected function create_dismiss_url( string $notice_id ) {
 
 		if ( ! function_exists( 'wp_create_nonce' ) ) {
-			require_once( ABSPATH . 'wp-includes/pluggable.php' );
+			require_once ABSPATH . 'wp-includes/pluggable.php';
 		}
 		$nonce = wp_create_nonce( 'prefix_notice_nonce_value' );
 
@@ -54,20 +56,21 @@ class Notice {
 
 	/**
 	 * Create the markup for a notice
+	 *
 	 * @param string $notice_id The ID of the particular notice.
-	 * @param array $content The content to add to the notice.
+	 * @param array  $content The content to add to the notice.
 	 * @return string
 	 */
 	protected function create_notice_markup( string $notice_id, array $content ) {
 
-		# Only show the Notice to Admins
+		// Only show the Notice to Admins
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
 		$dismissed_notices = $this->get_dismissed_notices();
 
-		# Bail if this notice has been dismissed
+		// Bail if this notice has been dismissed
 		if ( is_array( $dismissed_notices ) && in_array( $notice_id, $dismissed_notices, true ) ) {
 			return;
 		}
@@ -140,7 +143,7 @@ HTML;
 				$dismissed_notices = array();
 			}
 
-			# Add our new notice ID to the currently dismissed ones.
+			// Add our new notice ID to the currently dismissed ones.
 			array_push( $dismissed_notices, $notice_id );
 
 			$dismissed_notices = array_unique( $dismissed_notices );

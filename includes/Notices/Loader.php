@@ -1,13 +1,13 @@
 <?php
 /**
-* Load Notices to admin notices hook.
-*
-* Author:          plugin_author_name
-*
-* @link    plugin_author_url
-* @since   1.0.0
-* @package Notices
-*/
+ * Load Notices to admin notices hook.
+ *
+ * Author:          plugin_author_name
+ *
+ * @link    plugin_author_url
+ * @since   1.0.0
+ * @package Notices
+ */
 
 namespace Root\Notices;
 
@@ -19,8 +19,8 @@ use Root\Notices\Upsells_Notices;
 use Root\Notices\Review_Notices;
 
 /**
-* The Loader class.
-*/
+ * The Loader class.
+ */
 class Loader {
 
 	/**
@@ -30,7 +30,7 @@ class Loader {
 	 * @return void
 	 */
 	public function load_notices() {
-		( new Upsells_Notices );
-		( new Review_Notices );
+		( new Upsells_Notices() );
+		( new Review_Notices() );
 	}
 }

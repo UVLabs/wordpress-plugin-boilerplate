@@ -66,7 +66,7 @@ register_deactivation_hook( __FILE__, 'deactivate_prefix' );
 if ( function_exists( 'phpversion' ) ) {
 
 	if ( version_compare( phpversion(), '7.3', '<' ) ) {
-		add_action( 'admin_notices', array( ( new Root\Notices\Admin ), 'output_php_version_notice' ) );
+		add_action( 'admin_notices', array( ( new Root\Notices\Admin() ), 'output_php_version_notice' ) );
 		return;
 	}
 }
@@ -76,7 +76,7 @@ if ( function_exists( 'phpversion' ) ) {
  */
 if ( defined( 'PHP_VERSION' ) ) {
 	if ( version_compare( PHP_VERSION, '7.3', '<' ) ) {
-		add_action( 'admin_notices', array( ( new Root\Notices\Admin ), 'output_php_version_notice' ) );
+		add_action( 'admin_notices', array( ( new Root\Notices\Admin() ), 'output_php_version_notice' ) );
 		return;
 	}
 }

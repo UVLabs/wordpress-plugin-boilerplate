@@ -34,9 +34,8 @@ class Setup_Cron {
 	public function set_cron_tasks() {
 
 		// if ( ! wp_next_scheduled( 'event-name', array() ) ) {
-		// 	wp_schedule_event( time(), 'daily', 'event-name' );
+		// wp_schedule_event( time(), 'daily', 'event-name' );
 		// }
-
 	}
 
 }

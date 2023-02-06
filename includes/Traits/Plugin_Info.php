@@ -1,14 +1,14 @@
 <?php
 
 /**
-* Trait which holds information about the PREFIX plugin.
-*
-* Author:          plugin_author_name
-*
-* @link    plugin_author_url
-* @since   1.0.0
-* @package Notices
-*/
+ * Trait which holds information about the PREFIX plugin.
+ *
+ * Author:          plugin_author_name
+ *
+ * @link    plugin_author_url
+ * @since   1.0.0
+ * @package Notices
+ */
 
 namespace Root\Traits;
 
@@ -52,6 +52,7 @@ trait Plugin_Info {
 
 	/**
 	 * Get the version PREFIX was installed at.
+	 *
 	 * @return mixed
 	 */
 	private function get_installed_at_version() {

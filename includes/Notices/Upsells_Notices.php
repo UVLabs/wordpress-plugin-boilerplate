@@ -1,14 +1,14 @@
 <?php
 
 /**
-* Class responsible for upsell notices.
-*
-* Author:          plugin_author_name
-*
-* @link    plugin_author_url
-* @since   1.0.0
-* @package Notices
-*/
+ * Class responsible for upsell notices.
+ *
+ * Author:          plugin_author_name
+ *
+ * @link    plugin_author_url
+ * @since   1.0.0
+ * @package Notices
+ */
 
 namespace Root\Notices;
 
@@ -20,8 +20,8 @@ use Root\Notices\Notice;
 use Root\Traits\Plugin_Info;
 
 /**
-* Class Upsells_Notices.
-*/
+ * Class Upsells_Notices.
+ */
 class Upsells_Notices extends Notice {
 
 	use Plugin_Info;

@@ -8,7 +8,6 @@
  *
  * @package    Root
  * @author_name     plugin_author_name <plugin_author_email>
- *
  */
 namespace Root\Bootstrap;
 
@@ -40,8 +39,8 @@ class Admin_Enqueues {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct() {
 		$this->plugin_name = PREFIX_PLUGIN_NAME;
