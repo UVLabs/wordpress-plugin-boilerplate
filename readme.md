@@ -21,7 +21,7 @@ Run `npm install`
 
 - Add relevant info to package.json
 
-#### Search and replaces (all are case sensitive):
+#### Search and replaces (ALL SEARCHES SHOULD BE CASE SENSITIVE):
 
 - Replace 'my_plugin_name' with the Plugin name example Awesome WordPress Plugin (exact match [whole word])
 
@@ -31,7 +31,7 @@ Run `npm install`
 
 - Replace 'PREFIX' with a prefix for constants (loose match)
 
-- Replace 'prefix_' with a lowercase version of the plugin name example `_myplugin` etc. USE UNDERSCORES for the sparation example `_my_plugin` (loose match)
+- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match)
 
 - Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word])
 
