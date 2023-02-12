@@ -37,6 +37,8 @@ use Root\Bootstrap\I18n;
 use Root\Bootstrap\Admin_Enqueues;
 use Root\Bootstrap\Frontend_Enqueues;
 use Root\Bootstrap\Setup_Cron;
+// use Root\Notices\Loader as Notices_Loader;
+// use Root\Notices\Notice;
 
 /**
  * Class Main.
@@ -153,6 +155,8 @@ class Main {
 	private function define_admin_hooks() {
 		$plugin_admin         = new Admin_Enqueues();
 		$bootstrap_cron_setup = new Setup_Cron();
+		// $notice               = new Notice(); // (uncomment if making use of notice class)
+		// $notices_loader       = new Notices_Loader(); // (uncomment if making use of notice class)
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -161,6 +165,12 @@ class Main {
 
 		// Cron tasks.
 		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'set_cron_tasks' );
+
+		// Notices Loader (uncomment if making use of notice class)
+		// $this->loader->add_action( 'admin_notices', $notices_loader, 'load_notices' );
+
+		// Notices Ajax dismiss method (uncomment if making use of notice class)
+		// $this->loader->add_action( 'wp_ajax_prefix_dismiss_notice', $notice, 'dismiss_notice' );
 	}
 
 	/**
