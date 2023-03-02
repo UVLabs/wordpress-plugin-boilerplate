@@ -45,7 +45,7 @@ Run `npm install`
 
 - Replace 'Root_' with a shortname for plugin example `Myplugin_`. This will be used in the class name of some files. (loose match)
 
-You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.) (loose match.
+You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.
 
 - Replace 'plugin_author_name' with your name name, (exact match [whole word])
 
