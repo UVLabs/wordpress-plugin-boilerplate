@@ -153,6 +153,11 @@ class Main {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
+
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		$plugin_admin         = new Admin_Enqueues();
 		$bootstrap_cron_setup = new Setup_Cron();
 		// $notice               = new Notice(); // (uncomment if making use of notice class)
@@ -181,6 +186,11 @@ class Main {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
+
+		if ( is_admin() ) {
+			return;
+		}
+
 		$plugin_public = new Frontend_Enqueues();
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );

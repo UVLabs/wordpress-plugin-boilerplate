@@ -15,6 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Class responsible for methods to do with admin enqueing of JS and CSS.
+ *
+ * @package Root\Bootstrap
+ * @since 1.0.0
+ */
 class Admin_Enqueues {
 
 	/**

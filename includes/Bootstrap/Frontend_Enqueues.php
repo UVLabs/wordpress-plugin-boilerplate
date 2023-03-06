@@ -24,6 +24,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Class responsible for methods to do with frontend enqueing of JS and CSS.
+ *
+ * @package Root\Bootstrap
+ * @since 1.0.0
+ */
 class Frontend_Enqueues {
 
 	/**
