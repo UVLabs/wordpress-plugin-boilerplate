@@ -19,4 +19,5 @@ phpcs.xml
 logs
 assets/admin/js/*.js
 assets/public/js/*.js
-
+.github
+.wordpress-org
