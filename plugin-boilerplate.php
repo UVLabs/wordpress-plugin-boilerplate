@@ -32,6 +32,44 @@ if ( ! defined( 'PREFIX_VERSION' ) ) {
 	define( 'PREFIX_VERSION', '1.0.0' );
 }
 
+
+/**
+ * Check PHP version
+ */
+if ( function_exists( 'phpversion' ) ) {
+
+	if ( version_compare( phpversion(), '7.4', '<' ) ) {
+		add_action(
+			'admin_notices',
+			function() {
+				echo "<div class='notice notice-error is-dismissible'>";
+				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
+				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				echo '</div>';
+			}
+		);
+		return;
+	}
+}
+
+/**
+ * Check PHP versions
+ */
+if ( defined( 'PHP_VERSION' ) ) {
+	if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
+		add_action(
+			'admin_notices',
+			function() {
+				echo "<div class='notice notice-error is-dismissible'>";
+				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
+				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				echo '</div>';
+			}
+		);
+		return;
+	}
+}
+
 // Composer autoload
 require dirname( __FILE__ ) . '/vendor/autoload.php';
 
@@ -59,27 +97,6 @@ if ( ! function_exists( 'deactivate_prefix' ) ) {
 
 register_activation_hook( __FILE__, 'activate_prefix' );
 register_deactivation_hook( __FILE__, 'deactivate_prefix' );
-
-/**
- * Check PHP version
- */
-if ( function_exists( 'phpversion' ) ) {
-
-	if ( version_compare( phpversion(), '7.3', '<' ) ) {
-		add_action( 'admin_notices', array( ( new Root\Notices\Admin() ), 'output_php_version_notice' ) );
-		return;
-	}
-}
-
-/**
- * Check PHP versions
- */
-if ( defined( 'PHP_VERSION' ) ) {
-	if ( version_compare( PHP_VERSION, '7.3', '<' ) ) {
-		add_action( 'admin_notices', array( ( new Root\Notices\Admin() ), 'output_php_version_notice' ) );
-		return;
-	}
-}
 
 define( 'PREFIX_BASE_FILE', basename( plugin_dir_path( __FILE__ ) ) );
 define( 'PREFIX_PLUGIN_NAME', 'my_plugin_shortname' );

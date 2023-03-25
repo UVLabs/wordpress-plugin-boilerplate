@@ -69,22 +69,4 @@ class Admin {
 
 	}
 
-	/**
-	 * Output a notice when PHP version is below 7.0.
-	 *
-	 * @return void
-	 */
-	public function output_php_version_notice() {
-		?>
-
-		<div class="notice notice-error is-dismissible">
-		<?php
-		/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
-		echo sprintf( __( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.0. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
-		?>
-		</div>
-		<?php
-
-	}
-
 }
