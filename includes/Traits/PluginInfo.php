@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Trait which holds information about the PREFIX plugin.
  *
@@ -43,8 +42,8 @@ trait PluginInfo {
 			$installed_date = '@' . mktime( 0, 0, 0, date( 'm' ), date( 'd' ) - 2, date( 'Y' ) );
 		}
 
-		$installed_date       = new DateTime( $installed_date );
-		$today                = new DateTime( 'today' );
+		$installed_date       = new DateTime( $installed_date, wp_timezone() );
+		$today                = new DateTime( 'today', wp_timezone() );
 		$date_difference      = $installed_date->diff( $today );
 		$days_since_installed = $date_difference->format( '%a' );
 		return (int) $days_since_installed;

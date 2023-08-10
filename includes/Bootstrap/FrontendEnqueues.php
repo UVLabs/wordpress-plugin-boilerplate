@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -54,8 +53,6 @@ class FrontendEnqueues {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string $plugin_name       The name of the plugin.
-	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct() {
 		$this->plugin_name = PREFIX_PLUGIN_NAME;

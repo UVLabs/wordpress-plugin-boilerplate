@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired during plugin activation
  *
@@ -8,6 +7,7 @@
  *
  * @package    Root
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }

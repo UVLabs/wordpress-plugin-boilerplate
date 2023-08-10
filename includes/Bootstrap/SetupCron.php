@@ -32,10 +32,11 @@ class SetupCron {
 	 * @return void
 	 */
 	public function setCronTasks() {
-
-		// if ( ! wp_next_scheduled( 'event-name', array() ) ) {
-		// wp_schedule_event( time(), 'daily', 'event-name' );
-		// }
+		/*
+			if ( ! wp_next_scheduled( 'event-name', array() ) ) {
+			wp_schedule_event( time(), 'daily', 'event-name' );
+			}
+		*/
 	}
 
 }

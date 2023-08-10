@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -26,6 +25,7 @@
  * @subpackage Root/includes
  * @author_name     plugin_author_name <plugin_author_email>
  */
+
 namespace Root\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,8 +37,11 @@ use Root\Bootstrap\I18n;
 use Root\Bootstrap\AdminEnqueues;
 use Root\Bootstrap\FrontendEnqueues;
 use Root\Bootstrap\SetupCron;
-// use Root\Notices\Loader as NoticesLoader;
-// use Root\Notices\Notice;
+
+/*
+use Root\Notices\Loader as NoticesLoader;
+use Root\Notices\Notice;
+*/
 
 /**
  * Class Main.
@@ -157,9 +160,12 @@ class Main {
 
 		$plugin_admin         = new AdminEnqueues();
 		$bootstrap_cron_setup = new SetupCron();
-		// $notice               = new Notice(); // (uncomment if making use of notice class)
-		// $notices_loader       = new NoticesLoader(); // (uncomment if making use of notice class)
 
+		/*
+		// (uncomment if making use of notice class).
+		$notice               = new Notice();
+		$notices_loader       = new NoticesLoader();
+		*/
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueStyles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueScripts' );
 
@@ -168,11 +174,13 @@ class Main {
 		// Cron tasks.
 		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'setCronTasks' );
 
-		// Notices Loader (uncomment if making use of notice class)
-		// $this->loader->add_action( 'admin_notices', $notices_loader, 'loadNotices' );
+		/*
+		// Notices Loader (uncomment if making use of notice class).
+		$this->loader->add_action( 'admin_notices', $notices_loader, 'loadNotices' );
 
-		// Notices Ajax dismiss method (uncomment if making use of notice class)
-		// $this->loader->add_action( 'wp_ajax_prefix_dismissNotice', $notice, 'dismissNotice' );
+		// Notices Ajax dismiss method (uncomment if making use of notice class).
+		$this->loader->add_action( 'wp_ajax_prefix_dismissNotice', $notice, 'dismissNotice' );
+		*/
 	}
 
 	/**
@@ -237,8 +245,8 @@ class Main {
 	/**
 	 * Add action Links for plugin
 	 *
-	 * @param array  $plugin_actions
-	 * @param string $plugin_file
+	 * @param array  $plugin_actions Current plugin actions.
+	 * @param string $plugin_file Plugin file name.
 	 * @return array
 	 */
 	public function addPluginActionLinks( $plugin_actions, $plugin_file ) {

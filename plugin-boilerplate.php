@@ -70,7 +70,7 @@ if ( defined( 'PHP_VERSION' ) ) {
 	}
 }
 
-// Composer autoload
+// Composer autoload.
 require dirname( __FILE__ ) . '/vendor/autoload.php';
 
 /**
@@ -78,6 +78,11 @@ require dirname( __FILE__ ) . '/vendor/autoload.php';
  * This action is documented in includes/class-prefix-activator.php
  */
 if ( ! function_exists( 'activate_prefix' ) ) {
+	/**
+	 * Code to run when plugin is activated.
+	 *
+	 * @return void
+	 */
 	function activate_prefix() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-activator.php';
 		RootActivator::activate();
@@ -89,6 +94,11 @@ if ( ! function_exists( 'activate_prefix' ) ) {
  * This action is documented in includes/class-prefix-deactivator.php
  */
 if ( ! function_exists( 'deactivate_prefix' ) ) {
+	/**
+	 * Code to run when plugin is deactivated.
+	 *
+	 * @return void
+	 */
 	function deactivate_prefix() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-deactivator.php';
 		RootDeactivator::deactivate();
@@ -107,15 +117,12 @@ define( 'PREFIX_PLUGIN_PATH_URL', plugin_dir_url( __FILE__ ) );
 
 $debug = false;
 
-if ( function_exists( 'wp_get_environment_type' ) ) {
-	/* File will only exist in local installation */
-	if ( wp_get_environment_type() === 'local' ) {
-		$debug = true;
-	}
+// Add SL_DEV_DEBUGGING to your wp-config.php file on your test environment. Feel free to rename constant.
+if ( defined( 'SL_DEV_DEBUGGING' ) ) {
+	$debug = true;
 }
 
 define( 'PREFIX_DEBUG', $debug );
 
-use Root\Bootstrap\Main as Plugin;
-$plugin = Plugin::getInstance();
-$plugin->run();
+$plugin_instance = \Root\Bootstrap\Main::getInstance();
+$plugin_instance->run();

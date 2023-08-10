@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Review Notices.
  *
@@ -46,7 +45,7 @@ class ReviewNotices extends Notice {
 
 		$days_since_installed = $this->getDaysSinceInstalled();
 
-		// Show notice after 3 weeks
+		// Show notice after 3 weeks.
 		if ( $days_since_installed < 21 ) {
 			return;
 		}
@@ -58,7 +57,7 @@ class ReviewNotices extends Notice {
 			'link'  => 'https://wordpress.org/support/plugin/text-domain/reviews/#new-post',
 		);
 
-		echo $this->createNoticeMarkup( 'leave_review_notice_1', $content );
+		$this->createNoticeMarkup( 'leave_review_notice_1', $content );
 	}
 
 

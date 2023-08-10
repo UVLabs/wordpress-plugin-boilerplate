@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Admin Notices.
  *
@@ -10,12 +9,18 @@
  *
  * @package    Root
  */
+
 namespace Root\Notices;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Admin notices class.
+ *
+ * @package Root\Notices
+ */
 class Admin {
 
 	/**
@@ -29,7 +34,7 @@ class Admin {
 			return;
 		}
 
-		if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+		if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
 			return;
 		}
 

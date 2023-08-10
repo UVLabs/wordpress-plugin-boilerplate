@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -28,6 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Class responsible for setting up text domain.
+ *
+ * @package Root\Bootstrap
+ */
 class I18n {
 
 	/**

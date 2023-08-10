@@ -8,6 +8,7 @@
  * @since   1.0.0
  * @package Notices
  */
+
 namespace Root\Notices;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -62,20 +63,20 @@ class Notice {
 	 */
 	protected function createNoticeMarkup( string $notice_id, array $content ) {
 
-		// Only show the Notice to Admins
+		// Only show the Notice to Admins.
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
 		$dismissed_notices = $this->getDismissedNotices();
 
-		// Bail if this notice has been dismissed
+		// Bail if this notice has been dismissed.
 		if ( is_array( $dismissed_notices ) && in_array( $notice_id, $dismissed_notices, true ) ) {
 			return;
 		}
 
-		$title             = esc_html( $content['title'] ?? '' );
-		$body              = esc_html( $content['body'] ?? '' );
+		$title             = $content['title'] ?? '';
+		$body              = $content['body'] ?? '';
 		$cta_text          = esc_html( $content['cta'] ?? __( 'Learn more', 'text-domain' ) );
 		$learn_more_link   = esc_attr( $content['link'] ?? '' );
 		$learm_more_output = '';
@@ -86,22 +87,19 @@ class Notice {
 
 		$dismiss_url  = esc_html( $this->createDismissUrl( $notice_id ) );
 		$dismiss_text = esc_html__( 'Dismiss', 'text-domain' );
-
-		$markup = <<<HTML
-<!-- TODO Add styles for this notice logo -->
-			<div class="update-nag prefix-admin-notice">
+		?>
+			<!-- TODO Add styles for this notice logo -->
+			<div class="update-nag prefix-admin-notice" data-notice-title="<?php echo esc_attr( $title ); ?>">
 			<div class="prefix-notice-logo"></div> 
-			<p class="prefix-notice-title">$title</p> 
-			<p class="prefix-notice-body">$body</p>
+			<p class="prefix-notice-title"><?php echo esc_html( $title ); ?></p> 
+			<p class="prefix-notice-body"><?php echo esc_html( $body ); ?></p>
 			<ul class="prefix-notice-body">
-			$learm_more_output
-			<li id="prefix-notice-dismiss"><a href="$dismiss_url" style="color: #2b4fa3"> <span class="dashicons dashicons-dismiss"></span>$dismiss_text</a></li>
+			<?php echo $learm_more_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We already escaped the individual contents $learm_more_output above. ?>
+			<li id="prefix-notice-dismiss"><a href="<?php echo esc_attr( $dismiss_url ); ?>" style="color: #2b4fa3"> <span class="dashicons dashicons-dismiss"></span><?php echo esc_html( $dismiss_text ); ?></a></li>
 			</ul>
 			</div>
 
-HTML;
-
-		return $markup;
+		<?php
 	}
 
 	/**
@@ -111,7 +109,13 @@ HTML;
 	 */
 	protected function getNoticeID() {
 
-		$notice_id = $_REQUEST['prefix_notice_id'] ?? '';
+		$nonce = sanitize_text_field( wp_unslash( $_REQUEST['prefix_notice_nonce_value'] ?? '' ) );
+
+		if ( ! wp_verify_nonce( $nonce, 'prefix_notice_nonce_value' ) ) {
+			exit( esc_html__( 'Failed to verify nonce. Please try going back and refreshing the page to try again.', 'text-domain' ) );
+		}
+
+		$notice_id = sanitize_text_field( wp_unslash( $_REQUEST['prefix_notice_id'] ?? '' ) );
 
 		if ( empty( $notice_id ) ) {
 			return;
@@ -127,33 +131,33 @@ HTML;
 	 */
 	public function dismissNotice() {
 
-		if ( ! wp_verify_nonce( $_REQUEST['prefix_notice_nonce'], 'prefix_notice_nonce_value' ) ) {
-			exit( 'Failed to verify nonce. Please try going back and refreshing the page to try again.' );
+		$nonce = sanitize_text_field( wp_unslash( $_REQUEST['prefix_notice_nonce'] ?? '' ) );
+
+		if ( ! wp_verify_nonce( $nonce, 'prefix_notice_nonce_value' ) ) {
+			exit( esc_html__( 'Failed to verify nonce. Please try going back and refreshing the page to try again.', 'text-domain' ) );
 		}
 
 		$notice_id = $this->getNoticeID();
 
-		if ( ! empty( $notice_id ) ) {
-
-			$dismissed_notices = $this->getDismissedNotices();
-
-			if ( empty( $dismissed_notices ) ) {
-				$dismissed_notices = array();
-			}
-
-			// Add our new notice ID to the currently dismissed ones.
-			array_push( $dismissed_notices, $notice_id );
-
-			$dismissed_notices = array_unique( $dismissed_notices );
-
-			update_user_meta( $this->getUserID(), 'prefix_dismissed_notices', $dismissed_notices );
-
-			wp_redirect( $_SERVER['HTTP_REFERER'] );
-			exit;
-
+		if ( empty( $notice_id ) ) {
+			return;
 		}
 
-		return;
+		$dismissed_notices = $this->getDismissedNotices();
+
+		if ( empty( $dismissed_notices ) ) {
+			$dismissed_notices = array();
+		}
+
+		// Add our new notice ID to the currently dismissed ones.
+		array_push( $dismissed_notices, $notice_id );
+
+		$dismissed_notices = array_unique( $dismissed_notices );
+
+		update_user_meta( $this->getUserID(), 'prefix_dismissed_notices', $dismissed_notices );
+
+		wp_safe_redirect( sanitize_text_field( wp_unslash( $_SERVER['HTTP_REFERER'] ?? get_admin_url() ) ) );
+		exit;
 	}
 
 }

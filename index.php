@@ -1,1 +1,11 @@
-<?php // Silence is golden
+<?php
+/**
+ * Silence is golden.
+ *
+ * Author:          Uriahs Victor
+ * Created on:      10/08/2023 (d/m/y)
+ *
+ * @link    https://uriahsvictor.com
+ * @since   1.0.0
+ * @package Prefix
+ */

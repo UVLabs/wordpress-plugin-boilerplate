@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class responsible for upsell notices.
  *
@@ -43,17 +42,17 @@ class UpsellsNotices extends Notice {
 
 		$days_since_installed = $this->getDaysSinceInstalled();
 
-		// Show notice after 4 days
+		// Show notice after 4 days.
 		if ( $days_since_installed < 3 ) {
 			return;
 		}
 
 		$content = array(
-			'title' => __( '', 'text-domain' ),
-			'body'  => __( '', 'text-domain' ),
+			'title' => __( 'Try out the PRO version.', 'text-domain' ),
+			'body'  => __( 'Replace me with content.', 'text-domain' ),
 			'link'  => '',
 		);
 
-		echo $this->createNoticeMarkup( 'initial_pro_launch_notice', $content );
+		$this->createNoticeMarkup( 'initial_pro_launch_notice', $content );
 	}
 }
