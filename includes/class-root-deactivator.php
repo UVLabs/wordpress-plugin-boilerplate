@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Root/includes
  * @author_name     plugin_author_name <plugin_author_email>
  */
-class Root_Deactivator {
+class RootDeactivator {
 
 	/**
 	 * Method fired on plugin deactivation.

@@ -21,7 +21,7 @@ use DateTime;
 /**
 * Trait Plugin_Info.
 */
-trait Plugin_Info {
+trait PluginInfo {
 
 	/**
 	 * Returns the number of days since PREFIX has been installed.
@@ -31,7 +31,7 @@ trait Plugin_Info {
 	 * @since    1.0.0
 	 * @return int Days since plugin has been installed.
 	 */
-	private function get_days_since_installed() {
+	private function getDaysSinceInstalled() {
 
 		// Get the installed date.
 		// If option does not exist then set installed date as two days ago.
@@ -55,7 +55,7 @@ trait Plugin_Info {
 	 *
 	 * @return mixed
 	 */
-	private function get_installed_at_version() {
+	private function getInstalledAtVersion() {
 		return get_option( 'prefix_installed_at_version' );
 	}
 }

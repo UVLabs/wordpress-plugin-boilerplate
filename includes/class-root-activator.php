@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Root/includes
  * @author_name     plugin_author_name <plugin_author_email>
  */
-class Root_Activator {
+class RootActivator {
 
 	/**
 	 * Method fired on plugin activation.

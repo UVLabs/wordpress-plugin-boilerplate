@@ -34,10 +34,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Root\Bootstrap\Loader;
 use Root\Bootstrap\I18n;
-use Root\Bootstrap\Admin_Enqueues;
-use Root\Bootstrap\Frontend_Enqueues;
-use Root\Bootstrap\Setup_Cron;
-// use Root\Notices\Loader as Notices_Loader;
+use Root\Bootstrap\AdminEnqueues;
+use Root\Bootstrap\FrontendEnqueues;
+use Root\Bootstrap\SetupCron;
+// use Root\Notices\Loader as NoticesLoader;
 // use Root\Notices\Notice;
 
 /**
@@ -87,7 +87,7 @@ class Main {
 	 *
 	 * @return Main()
 	 */
-	public static function get_instance() {
+	public static function getInstance() {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
@@ -109,10 +109,10 @@ class Main {
 
 		$this->plugin_name = PREFIX_PLUGIN_NAME;
 
-		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		$this->loadDependencies();
+		$this->setLocale();
+		$this->defineAdminHooks();
+		$this->definePublicHooks();
 	}
 
 	/**
@@ -124,7 +124,7 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function loadDependencies() {
 		$this->loader = new Loader();
 	}
 
@@ -137,12 +137,9 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
-
+	private function setLocale() {
 		$plugin_i18n = new I18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'loadPluginTextdomain' );
 	}
 
 	/**
@@ -152,30 +149,30 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	private function defineAdminHooks() {
 
 		if ( ! is_admin() ) {
 			return;
 		}
 
-		$plugin_admin         = new Admin_Enqueues();
-		$bootstrap_cron_setup = new Setup_Cron();
+		$plugin_admin         = new AdminEnqueues();
+		$bootstrap_cron_setup = new SetupCron();
 		// $notice               = new Notice(); // (uncomment if making use of notice class)
-		// $notices_loader       = new Notices_Loader(); // (uncomment if making use of notice class)
+		// $notices_loader       = new NoticesLoader(); // (uncomment if making use of notice class)
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueStyles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueScripts' );
 
-		$this->loader->add_filter( 'plugin_action_links', $this, 'add_plugin_action_links', PHP_INT_MAX, 2 );
+		$this->loader->add_filter( 'plugin_action_links', $this, 'addPluginActionLinks', PHP_INT_MAX, 2 );
 
 		// Cron tasks.
-		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'set_cron_tasks' );
+		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'setCronTasks' );
 
 		// Notices Loader (uncomment if making use of notice class)
-		// $this->loader->add_action( 'admin_notices', $notices_loader, 'load_notices' );
+		// $this->loader->add_action( 'admin_notices', $notices_loader, 'loadNotices' );
 
 		// Notices Ajax dismiss method (uncomment if making use of notice class)
-		// $this->loader->add_action( 'wp_ajax_prefix_dismiss_notice', $notice, 'dismiss_notice' );
+		// $this->loader->add_action( 'wp_ajax_prefix_dismissNotice', $notice, 'dismissNotice' );
 	}
 
 	/**
@@ -185,16 +182,16 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function definePublicHooks() {
 
 		if ( is_admin() ) {
 			return;
 		}
 
-		$plugin_public = new Frontend_Enqueues();
+		$plugin_public = new FrontendEnqueues();
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueueStyles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueueScripts' );
 	}
 
 	/**
@@ -213,7 +210,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function getPluginName() {
 		return $this->plugin_name;
 	}
 
@@ -223,7 +220,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader() {
+	public function getLoader() {
 		return $this->loader;
 	}
 
@@ -233,7 +230,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function getVersion() {
 		return $this->version;
 	}
 
@@ -244,7 +241,7 @@ class Main {
 	 * @param string $plugin_file
 	 * @return array
 	 */
-	public function add_plugin_action_links( $plugin_actions, $plugin_file ) {
+	public function addPluginActionLinks( $plugin_actions, $plugin_file ) {
 		return $plugin_actions;
 	}
 }

@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Setup_Cron.
+ * Class SetupCron.
  *
  * @since 1.0.0
  */
-class Setup_Cron {
+class SetupCron {
 
 	/**
 	 * Create cron tasks that should be running on the website.
@@ -31,7 +31,7 @@ class Setup_Cron {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function set_cron_tasks() {
+	public function setCronTasks() {
 
 		// if ( ! wp_next_scheduled( 'event-name', array() ) ) {
 		// wp_schedule_event( time(), 'daily', 'event-name' );

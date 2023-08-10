@@ -24,7 +24,7 @@ class Notice {
 	 *
 	 * @return int
 	 */
-	private function get_user_id() {
+	protected function getUserID() {
 		return get_current_user_id();
 	}
 
@@ -33,8 +33,8 @@ class Notice {
 	 *
 	 * @return mixed
 	 */
-	private function get_dismissed_notices() {
-		return get_user_meta( $this->get_user_id(), 'prefix_dismissed_notices', true );
+	protected function getDismissedNotices() {
+		return get_user_meta( $this->getUserID(), 'prefix_dismissed_notices', true );
 	}
 
 	/**
@@ -43,15 +43,14 @@ class Notice {
 	 * @param string $notice_id The ID of the particular notice.
 	 * @return string
 	 */
-	protected function create_dismiss_url( string $notice_id ) {
+	protected function createDismissUrl( string $notice_id ) {
 
 		if ( ! function_exists( 'wp_create_nonce' ) ) {
 			require_once ABSPATH . 'wp-includes/pluggable.php';
 		}
 		$nonce = wp_create_nonce( 'prefix_notice_nonce_value' );
 
-		return admin_url( 'admin-ajax.php?action=prefix_dismiss_notice&prefix_notice_id=' . $notice_id . '&prefix_notice_nonce=' . $nonce );
-
+		return admin_url( 'admin-ajax.php?action=prefix_dismissNotice&prefix_notice_id=' . $notice_id . '&prefix_notice_nonce=' . $nonce );
 	}
 
 	/**
@@ -61,14 +60,14 @@ class Notice {
 	 * @param array  $content The content to add to the notice.
 	 * @return string
 	 */
-	protected function create_notice_markup( string $notice_id, array $content ) {
+	protected function createNoticeMarkup( string $notice_id, array $content ) {
 
 		// Only show the Notice to Admins
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
-		$dismissed_notices = $this->get_dismissed_notices();
+		$dismissed_notices = $this->getDismissedNotices();
 
 		// Bail if this notice has been dismissed
 		if ( is_array( $dismissed_notices ) && in_array( $notice_id, $dismissed_notices, true ) ) {
@@ -85,7 +84,7 @@ class Notice {
 			$learm_more_output = "<li id='prefix-notice-cta'><a target='_blank' href='$learn_more_link' style='color: #2b4fa3'><span class='dashicons dashicons-share-alt2'></span>$cta_text</a></li>";
 		}
 
-		$dismiss_url  = esc_html( $this->create_dismiss_url( $notice_id ) );
+		$dismiss_url  = esc_html( $this->createDismissUrl( $notice_id ) );
 		$dismiss_text = esc_html__( 'Dismiss', 'text-domain' );
 
 		$markup = <<<HTML
@@ -103,7 +102,6 @@ class Notice {
 HTML;
 
 		return $markup;
-
 	}
 
 	/**
@@ -111,7 +109,7 @@ HTML;
 	 *
 	 * @return mixed
 	 */
-	protected function get_notice_id() {
+	protected function getNoticeID() {
 
 		$notice_id = $_REQUEST['prefix_notice_id'] ?? '';
 
@@ -127,17 +125,17 @@ HTML;
 	 *
 	 * @return void
 	 */
-	public function dismiss_notice() {
+	public function dismissNotice() {
 
 		if ( ! wp_verify_nonce( $_REQUEST['prefix_notice_nonce'], 'prefix_notice_nonce_value' ) ) {
 			exit( 'Failed to verify nonce. Please try going back and refreshing the page to try again.' );
 		}
 
-		$notice_id = $this->get_notice_id();
+		$notice_id = $this->getNoticeID();
 
 		if ( ! empty( $notice_id ) ) {
 
-			$dismissed_notices = $this->get_dismissed_notices();
+			$dismissed_notices = $this->getDismissedNotices();
 
 			if ( empty( $dismissed_notices ) ) {
 				$dismissed_notices = array();
@@ -148,7 +146,7 @@ HTML;
 
 			$dismissed_notices = array_unique( $dismissed_notices );
 
-			update_user_meta( $this->get_user_id(), 'prefix_dismissed_notices', $dismissed_notices );
+			update_user_meta( $this->getUserID(), 'prefix_dismissed_notices', $dismissed_notices );
 
 			wp_redirect( $_SERVER['HTTP_REFERER'] );
 			exit;
@@ -156,7 +154,6 @@ HTML;
 		}
 
 		return;
-
 	}
 
 }

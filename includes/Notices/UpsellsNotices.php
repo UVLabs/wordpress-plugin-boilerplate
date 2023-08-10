@@ -17,14 +17,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Root\Notices\Notice;
-use Root\Traits\Plugin_Info;
+use Root\Traits\PluginInfo;
 
 /**
- * Class Upsells_Notices.
+ * Class UpsellsNotices.
  */
-class Upsells_Notices extends Notice {
+class UpsellsNotices extends Notice {
 
-	use Plugin_Info;
+	use PluginInfo;
 
 	/**
 	 * Class constructor
@@ -39,9 +39,9 @@ class Upsells_Notices extends Notice {
 	 *
 	 * @return void
 	 */
-	public function create_pro_notice() {
+	public function createProNotice() {
 
-		$days_since_installed = $this->get_days_since_installed();
+		$days_since_installed = $this->getDaysSinceInstalled();
 
 		// Show notice after 4 days
 		if ( $days_since_installed < 3 ) {
@@ -54,6 +54,6 @@ class Upsells_Notices extends Notice {
 			'link'  => '',
 		);
 
-		echo $this->create_notice_markup( 'initial_pro_launch_notice', $content );
+		echo $this->createNoticeMarkup( 'initial_pro_launch_notice', $content );
 	}
 }

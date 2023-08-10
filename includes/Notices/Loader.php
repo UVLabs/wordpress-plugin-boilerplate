@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Root\Notices\Upsells_Notices;
-use Root\Notices\Review_Notices;
+use Root\Notices\UpsellsNotices;
+use Root\Notices\ReviewNotices;
 
 /**
  * The Loader class.
@@ -29,8 +29,8 @@ class Loader {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function load_notices() {
-		( new Upsells_Notices() );
-		( new Review_Notices() );
+	public function loadNotices() {
+		( new UpsellsNotices() );
+		( new ReviewNotices() );
 	}
 }

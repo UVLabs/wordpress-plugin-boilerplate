@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package Root\Bootstrap
  * @since 1.0.0
  */
-class Frontend_Enqueues {
+class FrontendEnqueues {
 
 	/**
 	 * The ID of this plugin.
@@ -67,7 +67,7 @@ class Frontend_Enqueues {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueueStyles() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -82,7 +82,6 @@ class Frontend_Enqueues {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'public/css/prefix-public.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -90,7 +89,7 @@ class Frontend_Enqueues {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueueScripts() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -105,7 +104,6 @@ class Frontend_Enqueues {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'public/js/prefix-public.js', array( 'jquery' ), $this->version, false );
-
 	}
 
 }

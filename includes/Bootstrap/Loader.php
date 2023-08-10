@@ -51,10 +51,8 @@ class Loader {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-
 		$this->actions = array();
 		$this->filters = array();
-
 	}
 
 	/**
@@ -110,7 +108,6 @@ class Loader {
 		);
 
 		return $hooks;
-
 	}
 
 	/**
@@ -127,7 +124,6 @@ class Loader {
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
 	}
 
 }

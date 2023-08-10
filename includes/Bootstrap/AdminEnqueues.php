@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package Root\Bootstrap
  * @since 1.0.0
  */
-class Admin_Enqueues {
+class AdminEnqueues {
 
 	/**
 	 * The ID of this plugin.
@@ -58,7 +58,7 @@ class Admin_Enqueues {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueueStyles() {
 		wp_enqueue_style( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'admin/css/prefix-admin.css', array(), $this->version, 'all' );
 	}
 
@@ -67,7 +67,7 @@ class Admin_Enqueues {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueueScripts() {
 		wp_enqueue_script( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'admin/js/prefix-admin.js', array( 'jquery' ), $this->version, false );
 	}
 

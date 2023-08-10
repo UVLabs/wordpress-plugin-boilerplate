@@ -80,7 +80,7 @@ require dirname( __FILE__ ) . '/vendor/autoload.php';
 if ( ! function_exists( 'activate_prefix' ) ) {
 	function activate_prefix() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-activator.php';
-		Root_Activator::activate();
+		RootActivator::activate();
 	}
 }
 
@@ -91,7 +91,7 @@ if ( ! function_exists( 'activate_prefix' ) ) {
 if ( ! function_exists( 'deactivate_prefix' ) ) {
 	function deactivate_prefix() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-deactivator.php';
-		Root_Deactivator::deactivate();
+		RootDeactivator::deactivate();
 	}
 }
 
@@ -117,5 +117,5 @@ if ( function_exists( 'wp_get_environment_type' ) ) {
 define( 'PREFIX_DEBUG', $debug );
 
 use Root\Bootstrap\Main as Plugin;
-$plugin = Plugin::get_instance();
+$plugin = Plugin::getInstance();
 $plugin->run();

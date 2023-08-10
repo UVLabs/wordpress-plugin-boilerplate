@@ -19,14 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Root\Notices\Notice;
-use Root\Traits\Plugin_Info;
+use Root\Traits\PluginInfo;
 
 /**
- * Class Upsells_Notices.
+ * Class UpsellsNotices.
  */
-class Review_Notices extends Notice {
+class ReviewNotices extends Notice {
 
-	use Plugin_Info;
+	use PluginInfo;
 
 	/**
 	 * Class constructor
@@ -34,7 +34,7 @@ class Review_Notices extends Notice {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->create_review_plugin_notice();
+		$this->createReviewPluginNotice();
 	}
 
 	/**
@@ -42,9 +42,9 @@ class Review_Notices extends Notice {
 	 *
 	 * @return void
 	 */
-	public function create_review_plugin_notice() {
+	public function createReviewPluginNotice() {
 
-		$days_since_installed = $this->get_days_since_installed();
+		$days_since_installed = $this->getDaysSinceInstalled();
 
 		// Show notice after 3 weeks
 		if ( $days_since_installed < 21 ) {
@@ -58,7 +58,7 @@ class Review_Notices extends Notice {
 			'link'  => 'https://wordpress.org/support/plugin/text-domain/reviews/#new-post',
 		);
 
-		echo $this->create_notice_markup( 'leave_review_notice_1', $content );
+		echo $this->createNoticeMarkup( 'leave_review_notice_1', $content );
 	}
 
 
