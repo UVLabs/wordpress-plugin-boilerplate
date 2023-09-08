@@ -43,11 +43,9 @@ Run `npm install`
 
 - Replace 'Root' with a shortname for plugin example `Myplugin`. This is used as your namespace prefix. (exact match, whole word)
 
-- Replace 'Root_' with a shortname for plugin example `Myplugin_`. This will be used in the class name of some files. (loose match)
-
 You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.
 
-- Replace 'plugin_author_name' with your name name, (exact match [whole word])
+- Replace 'plugin_author_name' with your name, (exact match [whole word])
 
 - Replace 'plugin_author_url' with your website, (exact match [whole word])
 

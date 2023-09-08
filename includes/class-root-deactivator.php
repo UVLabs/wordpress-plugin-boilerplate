@@ -18,8 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since      1.0.0
  * @package    Root
- * @subpackage Root/includes
- * @author_name     plugin_author_name <plugin_author_email>
+ * @author     plugin_author_name <plugin_author_email>
  */
 class RootDeactivator {
 

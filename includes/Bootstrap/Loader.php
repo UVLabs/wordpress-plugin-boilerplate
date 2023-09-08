@@ -22,7 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * run function to execute the list of actions and filters.
  *
  * @package    Root
- * @subpackage Root/includes
  * @author_name     plugin_author_name <plugin_author_email>
  */
 class Loader {

@@ -22,7 +22,6 @@
  *
  * @since      1.0.0
  * @package    Root
- * @subpackage Root/includes
  * @author_name     plugin_author_name <plugin_author_email>
  */
 
@@ -56,7 +55,7 @@ class Main {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Root_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -192,7 +191,7 @@ class Main {
 	 */
 	private function definePublicHooks() {
 
-		if ( is_admin() ) {
+		if ( is_admin() && ! wp_doing_ajax() ) {
 			return;
 		}
 
