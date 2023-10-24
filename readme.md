@@ -29,11 +29,11 @@ Run `npm install`
 
 - Replace 'text-domain' with plugin text domain (exact match [whole word])
 
-- Replace 'PREFIX' with a prefix for constants (loose match)
+- Replace 'PREFIX' with a prefix for constants (loose match, case sensitive)
 
-- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match)
+- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case sensitive)
 
-- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word])
+- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case sensitive)
 
 - Replace 'root' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
 

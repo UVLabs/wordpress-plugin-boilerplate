@@ -36,10 +36,10 @@
     "type": "git",
     "url": ""
   },
-  "author": "author_name",
+  "author": "plugin_author_name",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": ""
+    "url": "plugin_author_url"
   },
   "homepage": ""
 }
