@@ -75,18 +75,13 @@ class Notice {
 			return;
 		}
 
-		$title             = $content['title'] ?? '';
-		$body              = $content['body'] ?? '';
-		$cta_text          = esc_html( $content['cta'] ?? __( 'Learn more', 'text-domain' ) );
-		$learn_more_link   = esc_attr( $content['link'] ?? '' );
-		$learm_more_output = '';
+		$title           = $content['title'] ?? '';
+		$body            = $content['body'] ?? '';
+		$cta_text        = $content['cta'] ?? __( 'Learn more', 'text-domain' );
+		$learn_more_link = $content['link'] ?? '';
 
-		if ( ! empty( $learn_more_link ) ) {
-			$learm_more_output = "<li id='prefix-notice-cta'><a target='_blank' href='$learn_more_link' style='color: #2b4fa3'><span class='dashicons dashicons-share-alt2'></span>$cta_text</a></li>";
-		}
-
-		$dismiss_url  = esc_html( $this->createDismissUrl( $notice_id ) );
-		$dismiss_text = esc_html__( 'Dismiss', 'text-domain' );
+		$dismiss_url  = $this->createDismissUrl( $notice_id );
+		$dismiss_text = __( 'Dismiss', 'text-domain' );
 		?>
 			<!-- TODO Add styles for this notice logo -->
 			<div class="update-nag prefix-admin-notice" data-notice-title="<?php echo esc_attr( $title ); ?>">
@@ -94,7 +89,9 @@ class Notice {
 			<p class="prefix-notice-title"><?php echo esc_html( $title ); ?></p> 
 			<p class="prefix-notice-body"><?php echo esc_html( $body ); ?></p>
 			<ul class="prefix-notice-body">
-			<?php echo $learm_more_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We already escaped the individual contents $learm_more_output above. ?>
+			<?php if ( ! empty( $learn_more_link ) ) { ?>
+				<li id='prefix-notice-cta'><a target='_blank' href='<?php echo esc_url( $learn_more_link ); ?>' style='color: #2b4fa3'><span class='dashicons dashicons-share-alt2'></span><?php echo esc_html( $cta_text ); ?></a></li>
+			<?php } ?>
 			<li id="prefix-notice-dismiss"><a href="<?php echo esc_attr( $dismiss_url ); ?>" style="color: #2b4fa3"> <span class="dashicons dashicons-dismiss"></span><?php echo esc_html( $dismiss_text ); ?></a></li>
 			</ul>
 			</div>

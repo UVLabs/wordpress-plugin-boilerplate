@@ -66,7 +66,8 @@ class AdminEnqueues {
 	 * @since    1.0.0
 	 */
 	public function enqueueScripts() {
-		wp_enqueue_script( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'admin/js/prefix-admin.js', array( 'jquery' ), $this->version, false );
+		$path = ! ( PREFIX_DEBUG ) ? 'build/' : '';
+		wp_enqueue_script( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'admin/js/' . $path . 'prefix-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
 }

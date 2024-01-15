@@ -153,8 +153,8 @@ class Main {
 	 */
 	private function defineAdminHooks() {
 
-		if ( ! is_admin() ) {
-			return;
+		if ( ! is_admin() && ! wp_doing_cron() ) {
+			return; // Bail if not admin request and not doing cron.
 		}
 
 		$plugin_admin         = new AdminEnqueues();
@@ -192,7 +192,7 @@ class Main {
 	private function definePublicHooks() {
 
 		if ( is_admin() && ! wp_doing_ajax() ) {
-			return;
+			return; // Bail if is admin request and not doing ajax.
 		}
 
 		$plugin_public = new FrontendEnqueues();
