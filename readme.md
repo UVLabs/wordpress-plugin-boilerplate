@@ -1,4 +1,4 @@
-### WordPress MVC Plugin Boilerplate
+### [WordPress MVC Plugin Boilerplate](https://github.com/UVLabs/wordpress-plugin-boilerplate)
 
 #### A WordPress plugin boilerplate made with PS4 autoloading and MVC design pattern in mind. 
 
@@ -50,3 +50,16 @@ You need to run `composer dumpautoload` after making this change to refresh auto
 - Replace 'plugin_author_url' with your website, (exact match [whole word])
 
 - Replace 'plugin_author_email' with your email address (exact match [whole word])
+
+- Replace `SL_DEV_DEBUGGING` with a constant of your choice. This constant should be defined as true in your local wp install's `wp-config.php` file where you work on the plugin. It is used to set the plugin's main debug constant as true and loads the unminified JS of the plugin while working in your local environment. 
+
+### Note
+
+If deploying plugin from github then remove the following lines from the `.gitignore` file:
+
+<pre>
+assets/admin/js/build/
+assets/public/js/build/
+</pre>
+
+These are the build files for your JS and should be committed if you're deploying the plugin from github using a plugin like Git Updater.
