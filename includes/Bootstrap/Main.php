@@ -159,12 +159,12 @@ class Main {
 
 		$plugin_admin         = new AdminEnqueues();
 		$bootstrap_cron_setup = new SetupCron();
-
 		/*
 		// (uncomment if making use of notice class).
 		$notice               = new Notice();
 		$notices_loader       = new NoticesLoader();
 		*/
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueStyles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueScripts' );
 
@@ -172,6 +172,12 @@ class Main {
 
 		// Cron tasks.
 		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'setCronTasks' );
+
+		/**
+		 * Make scripts modules
+		 * See the getScriptsAsModules() method for how this works.
+		 */
+		$this->loader->add_filter( 'script_loader_tag', $plugin_admin, 'getScriptsAsModules', 10, 3 );
 
 		/*
 		// Notices Loader (uncomment if making use of notice class).
@@ -199,6 +205,11 @@ class Main {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueueStyles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueueScripts' );
+
+		/**
+		 * Make scripts modules
+		 */
+		$this->loader->add_filter( 'script_loader_tag', $plugin_public, 'getScriptsAsModules', 10, 3 );
 	}
 
 	/**

@@ -23,6 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Root\Helpers\Functions;
+
 /**
  * Class responsible for methods to do with frontend enqueing of JS and CSS.
  *
@@ -85,6 +87,33 @@ class FrontendEnqueues {
 	public function enqueueScripts() {
 		$path = ! ( PREFIX_DEBUG ) ? 'build/' : '';
 		wp_enqueue_script( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'public/js/' . $path . 'prefix-public.js', array( 'jquery' ), $this->version . $this->maybe_burst_cache, false );
+	}
+
+	/**
+	 * Turn a script into a module so that we can make use of JS components.
+	 *
+	 * @param string $tag
+	 * @param string $handle
+	 * @param string $src
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function getScriptsAsModules( string $tag, string $handle, string $src ) {
+
+		if ( PREFIX_DEBUG === false ) { // Live scripts are built in Parcel so no need to make them modules.
+			return $tag;
+		}
+
+		$modules_handlers = array(
+			$this->plugin_name,
+			// $this->plugin_name . '-my-other-script', // You can add other script handlers.
+		);
+
+		if ( ! in_array( $handle, $modules_handlers, true ) ) {
+			return $tag;
+		}
+
+		return Functions::makeScriptsModules( $tag, $handle, $src );
 	}
 
 }
