@@ -15,11 +15,10 @@ Run `composer install`
 
 #### NPM
 
-Run `npm install`
+- Add relevant info to package.json
+- Run `npm install`
 
 #### Replacements:
-
-- Add relevant info to package.json
 
 #### Search and replaces (ALL SEARCHES SHOULD BE CASE SENSITIVE):
 

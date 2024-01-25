@@ -124,5 +124,10 @@ if ( defined( 'SL_DEV_DEBUGGING' ) ) {
 
 define( 'PREFIX_DEBUG', $debug );
 
-$plugin_instance = \Root\Bootstrap\Main::getInstance();
-$plugin_instance->run();
+if ( ! function_exists( 'PREFIX_INIT' ) ) {
+	function PREFIX_INIT() {
+		$plugin_instance = \Root\Bootstrap\Main::getInstance();
+		$plugin_instance->run();
+	}
+}
+add_action( 'plugins_loaded', 'PREFIX_INIT' );
