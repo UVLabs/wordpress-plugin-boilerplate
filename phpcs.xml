@@ -14,6 +14,8 @@
     <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
     </rule>
     <rule ref="vendor/suin/phpcs-psr4-sniff/src/Suin"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/> 
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
     <!-- <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
         <severity>0</severity>
     </rule> -->

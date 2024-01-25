@@ -90,7 +90,7 @@ class Main {
 	 * @return Main()
 	 */
 	public static function getInstance() {
-		if ( null === self::$instance ) {
+		if ( self::$instance === null ) {
 			self::$instance = new self();
 		}
 
