@@ -7,6 +7,9 @@
 .husky
 .prettierignore
 .prettierrc.json
+.github
+.wordpress-org
+.idea
 composer.json
 composer.lock
 package.json
@@ -19,5 +22,3 @@ phpcs.xml
 logs
 assets/admin/js/*.js
 assets/public/js/*.js
-.github
-.wordpress-org
