@@ -71,7 +71,7 @@ if ( defined( 'PHP_VERSION' ) ) {
 }
 
 // Composer autoload.
-require dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
 /**
  * The code that runs during plugin activation.
