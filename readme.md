@@ -38,7 +38,7 @@ Run `composer install`
 
 - Replace 'root' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
 
-- Replace `RootActivator` and `RootDeactivator` class names with the preferred class names for the activator and deactivator files.
+- Replace `RootActivator` and `RootDeactivator` class names with the preferred class names for the activator and deactivator files. (exact match [whole word], case sensitive)
 
 - Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
 
