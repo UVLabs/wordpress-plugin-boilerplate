@@ -13,9 +13,9 @@ mkdir -p artifact
 # Remove vendor folder so we can redownload without dev dependencies.
 rm -rf vendor
 
-# Remove dev dependencies
-composer install --no-dev
-composer dumpautoload
+# Install without dev dependencies and optimize composer.
+composer install --no-dev -o
+composer dumpautoload -o
 
 # Run Prettier
 npm run format
