@@ -31,12 +31,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Root\Bootstrap\Loader;
-use Root\Bootstrap\I18n;
-use Root\Bootstrap\AdminEnqueues;
-use Root\Bootstrap\FrontendEnqueues;
-use Root\Bootstrap\SetupCron;
-
 /*
 use Root\Notices\Loader as NoticesLoader;
 use Root\Notices\Notice;
