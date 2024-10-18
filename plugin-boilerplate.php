@@ -84,8 +84,7 @@ if ( ! function_exists( 'activate_prefix' ) ) {
 	 * @return void
 	 */
 	function activate_prefix() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-activator.php';
-		RootActivator::activate();
+		\Root\Notices\RootActivator::activate();
 	}
 }
 
@@ -100,8 +99,7 @@ if ( ! function_exists( 'deactivate_prefix' ) ) {
 	 * @return void
 	 */
 	function deactivate_prefix() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-deactivator.php';
-		RootDeactivator::deactivate();
+		\Root\Notices\RootDeactivator::deactivate();
 	}
 }
 

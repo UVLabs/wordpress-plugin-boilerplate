@@ -8,9 +8,12 @@
  * @package    Root
  */
 
+namespace Root\Notices;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 /**
  * Fired during plugin deactivation.
  *
