@@ -32,7 +32,7 @@ Run `composer install`
 
 - Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case sensitive)
 
-- Replace '_prefix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
+- Replace '_suffix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
 
 - Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case sensitive)
 

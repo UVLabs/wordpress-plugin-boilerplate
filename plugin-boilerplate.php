@@ -78,13 +78,13 @@ require_once __DIR__ . '/vendor-prefixed/autoload.php';
  * The code that runs during plugin activation.
  * This action is documented in includes/class-prefix-activator.php
  */
-if ( ! function_exists( 'activate_prefix' ) ) {
+if ( ! function_exists( 'activate_suffix' ) ) {
 	/**
 	 * Code to run when plugin is activated.
 	 *
 	 * @return void
 	 */
-	function activate_prefix() {
+	function activate_suffix() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/RootActivator.php';
 		\Root\RootActivator::activate();
 	}
@@ -94,20 +94,20 @@ if ( ! function_exists( 'activate_prefix' ) ) {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-prefix-deactivator.php
  */
-if ( ! function_exists( 'deactivate_prefix' ) ) {
+if ( ! function_exists( 'deactivate_suffix' ) ) {
 	/**
 	 * Code to run when plugin is deactivated.
 	 *
 	 * @return void
 	 */
-	function deactivate_prefix() {
+	function deactivate_suffix() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/RootDeactivator.php';
 		\Root\RootDeactivator::deactivate();
 	}
 }
 
-register_activation_hook( __FILE__, 'activate_prefix' );
-register_deactivation_hook( __FILE__, 'deactivate_prefix' );
+register_activation_hook( __FILE__, 'activate_suffix' );
+register_deactivation_hook( __FILE__, 'deactivate_suffix' );
 
 define( 'PREFIX_BASE_FILE', basename( plugin_dir_path( __FILE__ ) ) );
 define( 'PREFIX_PLUGIN_NAME', 'my_plugin_shortname' );
@@ -125,10 +125,16 @@ if ( defined( 'SL_DEV_DEBUGGING' ) ) {
 
 define( 'PREFIX_DEBUG', $debug );
 
-if ( ! function_exists( 'PREFIX_INIT' ) ) {
-	function PREFIX_INIT() {
+if ( ! function_exists( 'prefix_init' ) ) {
+	/**
+	 * Bootstrap plugin.
+	 *
+	 * @return void
+	 * @since 1.0.0
+	 */
+	function prefix_init() {
 		$plugin_instance = \Root\Bootstrap\Main::getInstance();
 		$plugin_instance->run();
 	}
 }
-add_action( 'plugins_loaded', 'PREFIX_INIT' );
+add_action( 'plugins_loaded', 'prefix_init' );

@@ -178,7 +178,7 @@ class Main {
 		$this->loader->add_action( 'admin_notices', $notices_loader, 'loadNotices' );
 
 		// Notices Ajax dismiss method (uncomment if making use of notice class).
-		$this->loader->add_action( 'wp_ajax_prefix_dismissNotice', $notice, 'dismissNotice' );
+		$this->loader->add_action( 'wp_ajax_suffix_dismissNotice', $notice, 'dismissNotice' );
 		*/
 	}
 
