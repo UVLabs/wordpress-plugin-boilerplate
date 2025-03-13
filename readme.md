@@ -36,9 +36,9 @@ Run `composer install`
 
 - Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case sensitive)
 
-- Replace 'Root' with a shortname for plugin example `Myplugin`. This is used as your namespace prefix. (loose match, case sensitive)
+- Rename `RootActivator` and `RootDeactivator` class files inside `includes` folder with the plugin name example `MyAwesomePluginActivator` and `MyAwesomePluginDeactivator`
 
-- Rename `RootActivator` and `RootDeactivator` class file names with the same value you set for 'Root' in the above step.
+- Replace 'Root' with plugin example `MyAwesomePlugin`. This is used as your namespace prefix. (loose match, case sensitive)
 
 - Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
 
