@@ -52,6 +52,8 @@ You need to run `composer dumpautoload` after making this change to refresh auto
 
 - Replace 'plugin_author_email' with your email address (exact match [whole word])
 
+- Rename plugin-boilerplate.php in the root folder of the plugin with your actual plugin name. Example `my-awesome-plugin.php`
+
 - Replace `SL_DEV_DEBUGGING` with a constant of your choice. This constant should be defined as true in your local wp install's `wp-config.php` file where you work on the plugin. It is used to set the plugin's main debug constant as true and loads the unminified JS of the plugin while working in your local environment. 
 
 ### Note
