@@ -72,6 +72,7 @@ if ( defined( 'PHP_VERSION' ) ) {
 
 // Composer autoload.
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor-prefixed/autoload.php';
 
 /**
  * The code that runs during plugin activation.

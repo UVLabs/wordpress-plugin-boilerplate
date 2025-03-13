@@ -2,7 +2,18 @@
     "scripts": {
         "lint" : "mkdir -p logs; vendor/bin/phpcs -s > ./logs/log.txt",
         "format": "vendor/bin/phpcbf -p",
-        "dist":  "sh bin/dist.sh"
+        "dist":  "sh bin/dist.sh",
+        "prefix-namespaces": [
+            "sh -c 'test -f ./bin/strauss.phar || curl -o bin/strauss.phar -L -C - https://github.com/BrianHenryIE/strauss/releases/latest/download/strauss.phar'",
+            "php bin/strauss.phar",
+            "composer dump-autoload"
+        ],
+        "post-install-cmd": [
+            "@prefix-namespaces"
+        ],
+        "post-update-cmd": [
+            "@prefix-namespaces"
+        ]
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
@@ -16,6 +27,39 @@
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "strauss": {
+            "target_directory": "vendor-prefixed",
+            "namespace_prefix": "Root\\",
+            "classmap_prefix": "Root_",
+            "constant_prefix": "PREFIX_",
+            "packages": [
+            ],
+            "update_call_sites": false,
+            "override_autoload": {
+            },
+            "exclude_from_copy": {
+                "packages": [
+                ],
+                "namespaces": [
+                ],
+                "file_patterns": [
+                ]
+            },
+            "exclude_from_prefix": {
+                "packages": [
+                ],
+                "namespaces": [
+                ],
+                "file_patterns": [
+                ]
+            },
+            "namespace_replacement_patterns" : {
+            },
+            "delete_vendor_packages": true,
+            "delete_vendor_files": false
         }
     }
 }
