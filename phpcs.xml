@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Root">
-    <description>PREFIX rules for PHP_CodeSnifferr</description>
+    <description>Plugin rules for PHP_CodeSnifferr</description>
 
     <file>.</file>
     <arg name="basepath" value="."/>
