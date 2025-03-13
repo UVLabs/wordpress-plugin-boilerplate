@@ -5,12 +5,12 @@
   "dependencies": {},
   "devDependencies": {
     "parcel": "^2.0.0-rc.0",
-    "prettier": "2.5.1",
+    "prettier": "^2.5.1",
     "husky": "^7.0.0"
   },
   "scripts": {
     "dev": "parcel watch --no-hmr",
-    "build": "parcel build",
+    "build": "parcel build --no-cache",
     "format": "prettier --write ./assets/**/* --no-error-on-unmatched-pattern",
     "prepare": "husky install"
   },
@@ -36,10 +36,10 @@
     "type": "git",
     "url": ""
   },
-  "author": "author_name",
+  "author": "plugin_author_name",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": ""
+    "url": "plugin_author_url"
   },
   "homepage": ""
 }

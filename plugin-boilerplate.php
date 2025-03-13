@@ -20,7 +20,7 @@
  * Author URI:        plugin_author_url
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Requires PHP: 7.3
+ * Requires PHP: 7.4
  * Text Domain:       text-domain
  */
 
@@ -32,41 +32,22 @@ if ( ! defined( 'PREFIX_VERSION' ) ) {
 	define( 'PREFIX_VERSION', '1.0.0' );
 }
 
-// Composer autoload
-require dirname( __FILE__ ) . '/vendor/autoload.php';
-
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-prefix-activator.php
- */
-if ( ! function_exists( 'activate_prefix' ) ) {
-	function activate_prefix() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-activator.php';
-		Root_Activator::activate();
-	}
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-prefix-deactivator.php
- */
-if ( ! function_exists( 'deactivate_prefix' ) ) {
-	function deactivate_prefix() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-prefix-deactivator.php';
-		Root_Deactivator::deactivate();
-	}
-}
-
-register_activation_hook( __FILE__, 'activate_prefix' );
-register_deactivation_hook( __FILE__, 'deactivate_prefix' );
 
 /**
  * Check PHP version
  */
 if ( function_exists( 'phpversion' ) ) {
 
-	if ( version_compare( phpversion(), '7.3', '<' ) ) {
-		add_action( 'admin_notices', array( ( new Root\Notices\Admin ), 'output_php_version_notice' ) );
+	if ( version_compare( phpversion(), '7.4', '<' ) ) {
+		add_action(
+			'admin_notices',
+			function() {
+				echo "<div class='notice notice-error is-dismissible'>";
+				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
+				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				echo '</div>';
+			}
+		);
 		return;
 	}
 }
@@ -75,11 +56,55 @@ if ( function_exists( 'phpversion' ) ) {
  * Check PHP versions
  */
 if ( defined( 'PHP_VERSION' ) ) {
-	if ( version_compare( PHP_VERSION, '7.3', '<' ) ) {
-		add_action( 'admin_notices', array( ( new Root\Notices\Admin ), 'output_php_version_notice' ) );
+	if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
+		add_action(
+			'admin_notices',
+			function() {
+				echo "<div class='notice notice-error is-dismissible'>";
+				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
+				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				echo '</div>';
+			}
+		);
 		return;
 	}
 }
+
+// Composer autoload.
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-prefix-activator.php
+ */
+if ( ! function_exists( 'activate_prefix' ) ) {
+	/**
+	 * Code to run when plugin is activated.
+	 *
+	 * @return void
+	 */
+	function activate_prefix() {
+		\Root\Notices\RootActivator::activate();
+	}
+}
+
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-prefix-deactivator.php
+ */
+if ( ! function_exists( 'deactivate_prefix' ) ) {
+	/**
+	 * Code to run when plugin is deactivated.
+	 *
+	 * @return void
+	 */
+	function deactivate_prefix() {
+		\Root\Notices\RootDeactivator::deactivate();
+	}
+}
+
+register_activation_hook( __FILE__, 'activate_prefix' );
+register_deactivation_hook( __FILE__, 'deactivate_prefix' );
 
 define( 'PREFIX_BASE_FILE', basename( plugin_dir_path( __FILE__ ) ) );
 define( 'PREFIX_PLUGIN_NAME', 'my_plugin_shortname' );
@@ -90,15 +115,17 @@ define( 'PREFIX_PLUGIN_PATH_URL', plugin_dir_url( __FILE__ ) );
 
 $debug = false;
 
-if ( function_exists( 'wp_get_environment_type' ) ) {
-	/* File will only exist in local installation */
-	if ( wp_get_environment_type() === 'local' ) {
-		$debug = true;
-	}
+// Add SL_DEV_DEBUGGING to your wp-config.php file on your test environment. Feel free to rename constant.
+if ( defined( 'SL_DEV_DEBUGGING' ) ) {
+	$debug = true;
 }
 
 define( 'PREFIX_DEBUG', $debug );
 
-use Root\Bootstrap\Main as Plugin;
-$plugin = Plugin::get_instance();
-$plugin->run();
+if ( ! function_exists( 'PREFIX_INIT' ) ) {
+	function PREFIX_INIT() {
+		$plugin_instance = \Root\Bootstrap\Main::getInstance();
+		$plugin_instance->run();
+	}
+}
+add_action( 'plugins_loaded', 'PREFIX_INIT' );

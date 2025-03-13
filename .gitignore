@@ -1,8 +1,11 @@
 .DS_Store
 .parcel-cache
 .vscode
+.idea
 artifact
 dist
 logs
 node_modules
 vendor
+assets/admin/js/build/
+assets/public/js/build/

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -28,6 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Class responsible for setting up text domain.
+ *
+ * @package Root\Bootstrap
+ */
 class I18n {
 
 	/**
@@ -35,14 +39,13 @@ class I18n {
 	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function loadPluginTextdomain() {
 
 		load_plugin_textdomain(
 			'text-domain',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
-
 	}
 
 }

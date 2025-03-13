@@ -5,15 +5,17 @@
 # Start fresh
 rm -rf dist
 rm -rf artifact
-rm prefix.zip
 
 # Make our directories
 mkdir -p dist
 mkdir -p artifact
 
-# Remove dev dependencies
-composer install --no-dev
-composer dumpautoload
+# Remove vendor folder so we can redownload without dev dependencies.
+rm -rf vendor
+
+# Install without dev dependencies and optimize composer.
+composer install --no-dev -o
+composer dumpautoload -o
 
 # Run Prettier
 npm run format

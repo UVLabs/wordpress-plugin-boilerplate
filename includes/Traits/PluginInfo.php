@@ -1,14 +1,13 @@
 <?php
-
 /**
-* Trait which holds information about the PREFIX plugin.
-*
-* Author:          plugin_author_name
-*
-* @link    plugin_author_url
-* @since   1.0.0
-* @package Notices
-*/
+ * Trait which holds information about the PREFIX plugin.
+ *
+ * Author:          plugin_author_name
+ *
+ * @link    plugin_author_url
+ * @since   1.0.0
+ * @package Notices
+ */
 
 namespace Root\Traits;
 
@@ -21,7 +20,7 @@ use DateTime;
 /**
 * Trait Plugin_Info.
 */
-trait Plugin_Info {
+trait PluginInfo {
 
 	/**
 	 * Returns the number of days since PREFIX has been installed.
@@ -31,7 +30,7 @@ trait Plugin_Info {
 	 * @since    1.0.0
 	 * @return int Days since plugin has been installed.
 	 */
-	private function get_days_since_installed() {
+	private function getDaysSinceInstalled() {
 
 		// Get the installed date.
 		// If option does not exist then set installed date as two days ago.
@@ -43,8 +42,8 @@ trait Plugin_Info {
 			$installed_date = '@' . mktime( 0, 0, 0, date( 'm' ), date( 'd' ) - 2, date( 'Y' ) );
 		}
 
-		$installed_date       = new DateTime( $installed_date );
-		$today                = new DateTime( 'today' );
+		$installed_date       = new DateTime( $installed_date, wp_timezone() );
+		$today                = new DateTime( 'today', wp_timezone() );
 		$date_difference      = $installed_date->diff( $today );
 		$days_since_installed = $date_difference->format( '%a' );
 		return (int) $days_since_installed;
@@ -52,9 +51,10 @@ trait Plugin_Info {
 
 	/**
 	 * Get the version PREFIX was installed at.
+	 *
 	 * @return mixed
 	 */
-	private function get_installed_at_version() {
+	private function getInstalledAtVersion() {
 		return get_option( 'prefix_installed_at_version' );
 	}
 }

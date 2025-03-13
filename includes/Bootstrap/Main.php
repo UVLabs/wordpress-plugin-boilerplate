@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -23,27 +22,25 @@
  *
  * @since      1.0.0
  * @package    Root
- * @subpackage Root/includes
  * @author_name     plugin_author_name <plugin_author_email>
  */
+
 namespace Root\Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Root\Bootstrap\Loader;
-use Root\Bootstrap\I18n;
-use Root\Bootstrap\Admin_Enqueues;
-use Root\Bootstrap\Frontend_Enqueues;
-use Root\Bootstrap\Setup_Cron;
+/*
+use Root\Notices\Loader as NoticesLoader;
+use Root\Notices\Notice;
+*/
 
 /**
-* Class Main.
-*
-* Class responsible for firing public and admin hooks.
-*
-*/
+ * Class Main.
+ *
+ * Class responsible for firing public and admin hooks.
+ */
 class Main {
 
 	/**
@@ -52,7 +49,7 @@ class Main {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Root_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -76,6 +73,7 @@ class Main {
 
 	/**
 	 * Plugin instance
+	 *
 	 * @var mixed
 	 */
 	private static $instance;
@@ -85,8 +83,8 @@ class Main {
 	 *
 	 * @return Main()
 	 */
-	public static function get_instance() {
-		if ( null === self::$instance ) {
+	public static function getInstance() {
+		if ( self::$instance === null ) {
 			self::$instance = new self();
 		}
 
@@ -107,10 +105,10 @@ class Main {
 
 		$this->plugin_name = PREFIX_PLUGIN_NAME;
 
-		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		$this->loadDependencies();
+		$this->setLocale();
+		$this->defineAdminHooks();
+		$this->definePublicHooks();
 	}
 
 	/**
@@ -122,25 +120,22 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function loadDependencies() {
 		$this->loader = new Loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Root_i18n class in order to set the domain and to register the hook
+	 * Uses the i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
-
+	private function setLocale() {
 		$plugin_i18n = new I18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'loadPluginTextdomain' );
 	}
 
 	/**
@@ -150,17 +145,41 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
-		$plugin_admin         = new Admin_Enqueues();
-		$bootstrap_cron_setup = new Setup_Cron();
+	private function defineAdminHooks() {
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		if ( ! is_admin() && ! wp_doing_cron() ) {
+			return; // Bail if not admin request and not doing cron.
+		}
 
-		$this->loader->add_filter( 'plugin_action_links', $this, 'add_plugin_action_links', PHP_INT_MAX, 2 );
+		$plugin_admin         = new AdminEnqueues();
+		$bootstrap_cron_setup = new SetupCron();
+		/*
+		// (uncomment if making use of notice class).
+		$notice               = new Notice();
+		$notices_loader       = new NoticesLoader();
+		*/
+
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueStyles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueueScripts' );
+
+		$this->loader->add_filter( 'plugin_action_links', $this, 'addPluginActionLinks', PHP_INT_MAX, 2 );
 
 		// Cron tasks.
-		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'set_cron_tasks' );
+		$this->loader->add_action( 'admin_init', $bootstrap_cron_setup, 'setCronTasks' );
+
+		/**
+		 * Make scripts modules
+		 * See the getScriptsAsModules() method for how this works.
+		 */
+		$this->loader->add_filter( 'script_loader_tag', $plugin_admin, 'getScriptsAsModules', 10, 3 );
+
+		/*
+		// Notices Loader (uncomment if making use of notice class).
+		$this->loader->add_action( 'admin_notices', $notices_loader, 'loadNotices' );
+
+		// Notices Ajax dismiss method (uncomment if making use of notice class).
+		$this->loader->add_action( 'wp_ajax_prefix_dismissNotice', $notice, 'dismissNotice' );
+		*/
 	}
 
 	/**
@@ -170,11 +189,21 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
-		$plugin_public = new Frontend_Enqueues;
+	private function definePublicHooks() {
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			return; // Bail if is admin request and not doing ajax.
+		}
+
+		$plugin_public = new FrontendEnqueues();
+
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueueStyles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueueScripts' );
+
+		/**
+		 * Make scripts modules
+		 */
+		$this->loader->add_filter( 'script_loader_tag', $plugin_public, 'getScriptsAsModules', 10, 3 );
 	}
 
 	/**
@@ -193,7 +222,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function getPluginName() {
 		return $this->plugin_name;
 	}
 
@@ -201,9 +230,9 @@ class Main {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Root_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader() {
+	public function getLoader() {
 		return $this->loader;
 	}
 
@@ -213,17 +242,18 @@ class Main {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function getVersion() {
 		return $this->version;
 	}
 
 	/**
 	 * Add action Links for plugin
-	 * @param array $plugin_actions
-	 * @param string $plugin_file
+	 *
+	 * @param array  $plugin_actions Current plugin actions.
+	 * @param string $plugin_file Plugin file name.
 	 * @return array
 	 */
-	public function add_plugin_action_links( $plugin_actions, $plugin_file ) {
+	public function addPluginActionLinks( $plugin_actions, $plugin_file ) {
 		return $plugin_actions;
 	}
 }
