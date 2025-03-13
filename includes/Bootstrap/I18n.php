@@ -47,5 +47,4 @@ class I18n {
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
 	}
-
 }

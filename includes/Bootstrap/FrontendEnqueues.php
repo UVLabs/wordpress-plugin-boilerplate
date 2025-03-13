@@ -115,5 +115,4 @@ class FrontendEnqueues {
 
 		return Functions::makeScriptsModules( $tag, $handle, $src );
 	}
-
 }

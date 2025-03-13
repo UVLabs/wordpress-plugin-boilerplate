@@ -156,5 +156,4 @@ class Notice {
 		wp_safe_redirect( sanitize_text_field( wp_unslash( $_SERVER['HTTP_REFERER'] ?? get_admin_url() ) ) );
 		exit;
 	}
-
 }

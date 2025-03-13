@@ -59,6 +59,4 @@ class ReviewNotices extends Notice {
 
 		$this->createNoticeMarkup( 'leave_review_notice_1', $content );
 	}
-
-
 }
