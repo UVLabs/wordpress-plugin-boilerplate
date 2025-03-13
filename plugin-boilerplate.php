@@ -41,10 +41,10 @@ if ( function_exists( 'phpversion' ) ) {
 	if ( version_compare( phpversion(), '7.4', '<' ) ) {
 		add_action(
 			'admin_notices',
-			function() {
+			function () {
 				echo "<div class='notice notice-error is-dismissible'>";
 				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
-				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				printf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
 				echo '</div>';
 			}
 		);
@@ -59,10 +59,10 @@ if ( defined( 'PHP_VERSION' ) ) {
 	if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 		add_action(
 			'admin_notices',
-			function() {
+			function () {
 				echo "<div class='notice notice-error is-dismissible'>";
 				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
-				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				printf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
 				echo '</div>';
 			}
 		);
@@ -71,7 +71,7 @@ if ( defined( 'PHP_VERSION' ) ) {
 }
 
 // Composer autoload.
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * The code that runs during plugin activation.
@@ -84,7 +84,8 @@ if ( ! function_exists( 'activate_prefix' ) ) {
 	 * @return void
 	 */
 	function activate_prefix() {
-		\Root\Notices\RootActivator::activate();
+		require_once plugin_dir_path( __FILE__ ) . 'includes/RootActivator.php';
+		\Root\RootActivator::activate();
 	}
 }
 
@@ -99,7 +100,8 @@ if ( ! function_exists( 'deactivate_prefix' ) ) {
 	 * @return void
 	 */
 	function deactivate_prefix() {
-		\Root\Notices\RootDeactivator::deactivate();
+		require_once plugin_dir_path( __FILE__ ) . 'includes/RootDeactivator.php';
+		\Root\RootDeactivator::deactivate();
 	}
 }
 

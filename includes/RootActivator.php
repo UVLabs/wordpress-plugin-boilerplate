@@ -8,7 +8,7 @@
  * @package    Root
  */
 
-namespace Root\Notices;
+namespace Root;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -53,7 +53,5 @@ class RootActivator {
 		if ( empty( $installed_at ) ) {
 			add_option( 'prefix_installed_at_version', PREFIX_VERSION, '', false );
 		}
-
 	}
-
 }
