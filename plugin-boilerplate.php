@@ -74,10 +74,6 @@ if ( defined( 'PHP_VERSION' ) ) {
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor-prefixed/autoload.php';
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-prefix-activator.php
- */
 if ( ! function_exists( 'activate_suffix' ) ) {
 	/**
 	 * Code to run when plugin is activated.
@@ -90,10 +86,6 @@ if ( ! function_exists( 'activate_suffix' ) ) {
 	}
 }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-prefix-deactivator.php
- */
 if ( ! function_exists( 'deactivate_suffix' ) ) {
 	/**
 	 * Code to run when plugin is deactivated.
