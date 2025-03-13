@@ -5,9 +5,8 @@
         "dist":  "sh bin/dist.sh"
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "0.7.1",
-        "wp-coding-standards/wpcs": "2.3",
-        "suin/phpcs-psr4-sniff": "^3.0"
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
+        "wp-coding-standards/wpcs": "dev-develop"
     },
     "autoload":{
         "psr-4": {
