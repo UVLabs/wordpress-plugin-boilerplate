@@ -32,7 +32,6 @@ if ( ! defined( 'PREFIX_VERSION' ) ) {
 	define( 'PREFIX_VERSION', '1.0.0' );
 }
 
-
 /**
  * Check PHP version
  */
@@ -129,4 +128,4 @@ if ( ! function_exists( 'prefix_init' ) ) {
 		$plugin_instance->run();
 	}
 }
-add_action( 'plugins_loaded', 'prefix_init' );
+add_action( 'init', 'prefix_init' );

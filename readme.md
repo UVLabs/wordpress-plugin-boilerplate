@@ -24,23 +24,23 @@ Run `composer install`
 
 - Replace 'my_plugin_name' with the Plugin name example `Awesome WordPress Plugin` (exact match [whole word])
 
-- Replace 'my_plugin_shortname' with a short lowercase version of the plugin name example `awesome_wp_plugin`. USE UNDERSCORES for the sparation (exact match [whole word])
+- Replace 'my_plugin_shortname' with a short lowercase version of the plugin name example `awesome_wp_plugin`. USE UNDERSCORES for the separation (exact match [whole word])
 
 - Replace 'text-domain' with plugin text domain (exact match [whole word])
 
-- Replace 'PREFIX' with a prefix for constants (loose match, case sensitive)
+- Replace 'PREFIX' with a prefix for constants (loose match, case-sensitive)
 
-- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case sensitive)
+- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case-sensitive)
 
 - Replace '_suffix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
 
-- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case sensitive)
+- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case-sensitive)
 
 - Rename `RootActivator` and `RootDeactivator` class files inside `includes` folder with the plugin name example `MyAwesomePluginActivator` and `MyAwesomePluginDeactivator`
 
-- Replace 'Root' with plugin example `MyAwesomePlugin`. This is used as your namespace prefix. (loose match, case sensitive)
+- Replace 'Root' with plugin example `MyAwesomePlugin`. This is used as your namespace prefix. (loose match, case-sensitive)
 
-- Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
+- Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the separation example `my-plugin-`
 
 - Open `dist.sh` in the `bin` folder and replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
 
