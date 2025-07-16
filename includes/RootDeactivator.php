@@ -8,7 +8,7 @@
  * @package    Root
  */
 
-namespace Root\Notices;
+namespace Root;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -32,5 +32,4 @@ class RootDeactivator {
 	 */
 	public static function deactivate() {
 	}
-
 }

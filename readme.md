@@ -24,27 +24,25 @@ Run `composer install`
 
 - Replace 'my_plugin_name' with the Plugin name example `Awesome WordPress Plugin` (exact match [whole word])
 
-- Replace 'my_plugin_shortname' with a short lowercase version of the plugin name example `awesome_wp_plugin`. USE UNDERSCORES for the sparation (exact match [whole word])
+- Replace 'my_plugin_shortname' with a short lowercase version of the plugin name example `awesome_wp_plugin`. USE UNDERSCORES for the separation (exact match [whole word])
 
 - Replace 'text-domain' with plugin text domain (exact match [whole word])
 
-- Replace 'PREFIX' with a prefix for constants (loose match, case sensitive)
+- Replace 'PREFIX' with a prefix for constants (loose match, case-sensitive)
 
-- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case sensitive)
+- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case-sensitive)
 
-- Replace '_prefix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
+- Replace '_suffix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
 
-- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case sensitive)
+- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case-sensitive)
 
-- Replace 'root' in file name for activator and deactivator classes located in `/includes` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
+- Rename `RootActivator` and `RootDeactivator` class files inside `includes` folder with the plugin name example `MyAwesomePluginActivator` and `MyAwesomePluginDeactivator`
 
-- Replace `RootActivator` and `RootDeactivator` class names with the preferred class names for the activator and deactivator files. (exact match [whole word], case sensitive)
+- Replace 'Root' with plugin example `MyAwesomePlugin`. This is used as your namespace prefix. (loose match, case-sensitive)
 
-- Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the sparation example `my-plugin-`
+- Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the separation example `my-plugin-`
 
 - Open `dist.sh` in the `bin` folder and replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
-
-- Replace 'Root' with a shortname for plugin example `Myplugin`. This is used as your namespace prefix. (exact match, whole word)
 
 You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.
 
@@ -53,6 +51,8 @@ You need to run `composer dumpautoload` after making this change to refresh auto
 - Replace 'plugin_author_url' with your website, (exact match [whole word])
 
 - Replace 'plugin_author_email' with your email address (exact match [whole word])
+
+- Rename plugin-boilerplate.php in the root folder of the plugin with your actual plugin name. Example `my-awesome-plugin.php`
 
 - Replace `SL_DEV_DEBUGGING` with a constant of your choice. This constant should be defined as true in your local wp install's `wp-config.php` file where you work on the plugin. It is used to set the plugin's main debug constant as true and loads the unminified JS of the plugin while working in your local environment. 
 

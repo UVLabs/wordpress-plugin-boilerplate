@@ -1,6 +1,6 @@
 <?php
 /**
- * Trait which holds information about the PREFIX plugin.
+ * Trait which holds information about the plugin.
  *
  * Author:          plugin_author_name
  *
@@ -23,7 +23,7 @@ use DateTime;
 trait PluginInfo {
 
 	/**
-	 * Returns the number of days since PREFIX has been installed.
+	 * Returns the number of days since the plugin has been installed.
 	 *
 	 * If the prefix_first_install_date option is not found. We return 2 days.
 	 *
@@ -50,7 +50,7 @@ trait PluginInfo {
 	}
 
 	/**
-	 * Get the version PREFIX was installed at.
+	 * Get the version the plugin was installed at.
 	 *
 	 * @return mixed
 	 */

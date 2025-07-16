@@ -107,5 +107,4 @@ class AdminEnqueues {
 
 		return Functions::makeScriptsModules( $tag, $handle, $src );
 	}
-
 }

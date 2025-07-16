@@ -1,12 +1,11 @@
 {
-  "name": "Root",
+  "name": "my_plugin_shortname",
   "version": "1.0.0",
   "description": "",
-  "dependencies": {},
   "devDependencies": {
+    "husky": "^7.0.0",
     "parcel": "^2.0.0-rc.0",
-    "prettier": "^2.5.1",
-    "husky": "^7.0.0"
+    "prettier": "^2.5.1"
   },
   "scripts": {
     "dev": "parcel watch --no-hmr",

@@ -7,5 +7,6 @@ dist
 logs
 node_modules
 vendor
+vendor-prefixed
 assets/admin/js/build/
 assets/public/js/build/

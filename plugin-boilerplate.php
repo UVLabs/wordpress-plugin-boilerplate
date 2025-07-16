@@ -32,7 +32,6 @@ if ( ! defined( 'PREFIX_VERSION' ) ) {
 	define( 'PREFIX_VERSION', '1.0.0' );
 }
 
-
 /**
  * Check PHP version
  */
@@ -41,10 +40,10 @@ if ( function_exists( 'phpversion' ) ) {
 	if ( version_compare( phpversion(), '7.4', '<' ) ) {
 		add_action(
 			'admin_notices',
-			function() {
+			function () {
 				echo "<div class='notice notice-error is-dismissible'>";
 				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
-				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				printf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
 				echo '</div>';
 			}
 		);
@@ -59,10 +58,10 @@ if ( defined( 'PHP_VERSION' ) ) {
 	if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 		add_action(
 			'admin_notices',
-			function() {
+			function () {
 				echo "<div class='notice notice-error is-dismissible'>";
 				/* translators: 1: Opening <p> HTML element 2: Opening <strong> HTML element 3: Closing <strong> HTML element 4: Closing <p> HTML element  */
-				echo sprintf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
+				printf( esc_html__( '%1$s%2$s my_plugin_name NOTICE:%3$s PHP version too low to use this plugin. Please change to at least PHP 7.4. You can contact your web host for assistance in updating your PHP version.%4$s', 'text-domain' ), '<p>', '<strong>', '</strong>', '</p>' );
 				echo '</div>';
 			}
 		);
@@ -71,40 +70,35 @@ if ( defined( 'PHP_VERSION' ) ) {
 }
 
 // Composer autoload.
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor-prefixed/autoload.php';
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-prefix-activator.php
- */
-if ( ! function_exists( 'activate_prefix' ) ) {
+if ( ! function_exists( 'activate_suffix' ) ) {
 	/**
 	 * Code to run when plugin is activated.
 	 *
 	 * @return void
 	 */
-	function activate_prefix() {
-		\Root\Notices\RootActivator::activate();
+	function activate_suffix() {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/RootActivator.php';
+		\Root\RootActivator::activate();
 	}
 }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-prefix-deactivator.php
- */
-if ( ! function_exists( 'deactivate_prefix' ) ) {
+if ( ! function_exists( 'deactivate_suffix' ) ) {
 	/**
 	 * Code to run when plugin is deactivated.
 	 *
 	 * @return void
 	 */
-	function deactivate_prefix() {
-		\Root\Notices\RootDeactivator::deactivate();
+	function deactivate_suffix() {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/RootDeactivator.php';
+		\Root\RootDeactivator::deactivate();
 	}
 }
 
-register_activation_hook( __FILE__, 'activate_prefix' );
-register_deactivation_hook( __FILE__, 'deactivate_prefix' );
+register_activation_hook( __FILE__, 'activate_suffix' );
+register_deactivation_hook( __FILE__, 'deactivate_suffix' );
 
 define( 'PREFIX_BASE_FILE', basename( plugin_dir_path( __FILE__ ) ) );
 define( 'PREFIX_PLUGIN_NAME', 'my_plugin_shortname' );
@@ -122,10 +116,16 @@ if ( defined( 'SL_DEV_DEBUGGING' ) ) {
 
 define( 'PREFIX_DEBUG', $debug );
 
-if ( ! function_exists( 'PREFIX_INIT' ) ) {
-	function PREFIX_INIT() {
+if ( ! function_exists( 'prefix_init' ) ) {
+	/**
+	 * Bootstrap plugin.
+	 *
+	 * @return void
+	 * @since 1.0.0
+	 */
+	function prefix_init() {
 		$plugin_instance = \Root\Bootstrap\Main::getInstance();
 		$plugin_instance->run();
 	}
 }
-add_action( 'plugins_loaded', 'PREFIX_INIT' );
+add_action( 'init', 'prefix_init' );
