@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Root\Helpers\Functions;
+use Root\Helpers\FunctionsHelper;
 
 /**
  * Class responsible for methods to do with admin enqueing of JS and CSS.
@@ -105,6 +105,6 @@ class AdminEnqueues {
 			return $tag;
 		}
 
-		return Functions::makeScriptsModules( $tag, $handle, $src );
+		return FunctionsHelper::makeScriptsModules( $tag, $handle, $src );
 	}
 }

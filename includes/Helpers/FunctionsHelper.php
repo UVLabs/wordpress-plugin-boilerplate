@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package Root\Helpers
  * @since 1.0.0
  */
-class Functions {
+class FunctionsHelper {
 
 	/**
 	 * Turn a script into a module so that we can make use of JS components.
