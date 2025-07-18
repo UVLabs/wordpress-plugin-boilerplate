@@ -38,7 +38,7 @@ class FunctionsHelper {
 		$parts = explode( '</script>', $tag ); // Break up our string
 
 		foreach ( $parts as $key => $part ) {
-			if (str_contains($part, $src)) { // Make sure we're only altering the tag for our module script.
+			if ( str_contains( $part, $src ) ) { // Make sure we're only altering the tag for our module script.
 				$parts[ $key ] = '<script type="module" src="' . esc_url( $src ) . '" id="' . esc_attr( $id ) . '">';
 			}
 		}
