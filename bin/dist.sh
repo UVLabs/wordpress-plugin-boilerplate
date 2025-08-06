@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# Prepare plugin for uploading to wp.org.
+# Check PHP compatibility.
+if ! composer compat; then
+    echo "PHP compatibility check failed. Aborting distribution process."
+    exit 1
+fi
 
 # Start fresh
 rm -rf dist

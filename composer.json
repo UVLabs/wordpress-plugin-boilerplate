@@ -1,6 +1,7 @@
 {   
     "scripts": {
         "lint" : "mkdir -p logs; vendor/bin/phpcs -s > ./logs/log.txt",
+        "compat" : "vendor/bin/phpcs -d memory_limit=1024M -s -p includes --standard=PHPCompatibility --runtime-set php_version 8.3 --runtime-set testVersion 8.3",
         "format": "vendor/bin/phpcbf -p",
         "dist":  "sh bin/dist.sh",
         "namespace-dependencies": [
@@ -17,7 +18,8 @@
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
-        "wp-coding-standards/wpcs": "dev-develop"
+        "wp-coding-standards/wpcs": "dev-develop",
+        "phpcompatibility/php-compatibility": "dev-develop"
     },
     "autoload":{
         "psr-4": {
