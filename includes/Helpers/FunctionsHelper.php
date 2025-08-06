@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package Root\Helpers
  * @since 1.0.0
  */
-class Functions {
+class FunctionsHelper {
 
 	/**
 	 * Turn a script into a module so that we can make use of JS components.
@@ -32,13 +32,13 @@ class Functions {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public static function makeScriptsModules( string $tag, string $handle, string $src ) {
+	public static function makeScriptsModules( string $tag, string $handle, string $src ): string {
 
 		$id    = $handle . '-js';
 		$parts = explode( '</script>', $tag ); // Break up our string
 
 		foreach ( $parts as $key => $part ) {
-			if ( strpos( $part, $src ) !== false ) { // Make sure we're only altering the tag for our module script.
+			if ( str_contains( $part, $src ) ) { // Make sure we're only altering the tag for our module script.
 				$parts[ $key ] = '<script type="module" src="' . esc_url( $src ) . '" id="' . esc_attr( $id ) . '">';
 			}
 		}

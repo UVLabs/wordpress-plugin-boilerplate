@@ -30,8 +30,8 @@ class RootActivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {
-		self::prefix_add_default_settings();
+	public static function activate(): void {
+		self::addDefaultSettings();
 	}
 
 	/**
@@ -39,7 +39,7 @@ class RootActivator {
 	 *
 	 * @return void
 	 */
-	private static function prefix_add_default_settings() {
+	private static function addDefaultSettings(): void {
 
 		$installed_at = get_option( 'prefix_installed_at_version' );
 		$install_date = get_option( 'prefix_first_install_date' );
