@@ -54,10 +54,10 @@ class FrontendEnqueues {
 	/**
 	 * Burst cache if on Local dev environment.
 	 *
-	 * @var int
+	 * @var string|int
 	 * @since 1.0.0
 	 */
-	private $maybe_burst_cache;
+	private string|int $maybe_burst_cache;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -75,7 +75,7 @@ class FrontendEnqueues {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueueStyles() {
+	public function enqueueStyles(): void {
 		wp_enqueue_style( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'public/css/prefix-public.css', array(), $this->version . $this->maybe_burst_cache, 'all' );
 	}
 
@@ -84,7 +84,7 @@ class FrontendEnqueues {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueueScripts() {
+	public function enqueueScripts(): void {
 		$path = ! ( PREFIX_DEBUG ) ? 'build/' : '';
 		wp_enqueue_script( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'public/js/' . $path . 'prefix-public.js', array( 'jquery' ), $this->version . $this->maybe_burst_cache, false );
 	}
@@ -98,7 +98,7 @@ class FrontendEnqueues {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public function getScriptsAsModules( string $tag, string $handle, string $src ) {
+	public function getScriptsAsModules( string $tag, string $handle, string $src ): string {
 
 		if ( PREFIX_DEBUG === false ) { // Live scripts are built in Parcel so no need to make them modules.
 			return $tag;
