@@ -51,7 +51,7 @@ class Main {
 	 * @access   protected
 	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
-	protected $loader;
+	protected Loader $loader;
 
 	/**
 	 * The unique identifier of this plugin.
@@ -60,7 +60,7 @@ class Main {
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
-	protected $plugin_name;
+	protected string $plugin_name;
 
 	/**
 	 * The current version of the plugin.
@@ -69,7 +69,7 @@ class Main {
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
-	protected $version;
+	protected string $version;
 
 	/**
 	 * Plugin instance
@@ -83,7 +83,7 @@ class Main {
 	 *
 	 * @return Main()
 	 */
-	public static function getInstance() {
+	public static function getInstance(): Main {
 		if ( self::$instance === null ) {
 			self::$instance = new self();
 		}
@@ -120,7 +120,7 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function loadDependencies() {
+	private function loadDependencies(): void {
 		$this->loader = new Loader();
 	}
 
@@ -133,7 +133,7 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function setLocale() {
+	private function setLocale(): void {
 		$plugin_i18n = new I18n();
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'loadPluginTextdomain' );
 	}
@@ -145,7 +145,7 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function defineAdminHooks() {
+	private function defineAdminHooks(): void {
 
 		if ( ! is_admin() && ! wp_doing_cron() ) {
 			return; // Bail if not admin request and not doing cron.
@@ -189,7 +189,7 @@ class Main {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function definePublicHooks() {
+	private function definePublicHooks(): void {
 
 		if ( is_admin() && ! wp_doing_ajax() ) {
 			return; // Bail if is admin request and not doing ajax.
@@ -211,7 +211,7 @@ class Main {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run(): void {
 		$this->loader->run();
 	}
 
@@ -222,7 +222,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function getPluginName() {
+	public function getPluginName(): string {
 		return $this->plugin_name;
 	}
 
@@ -232,7 +232,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function getLoader() {
+	public function getLoader(): Loader {
 		return $this->loader;
 	}
 
@@ -242,7 +242,7 @@ class Main {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function getVersion() {
+	public function getVersion(): string {
 		return $this->version;
 	}
 
@@ -253,7 +253,7 @@ class Main {
 	 * @param string $plugin_file Plugin file name.
 	 * @return array
 	 */
-	public function addPluginActionLinks( $plugin_actions, $plugin_file ) {
+	public function addPluginActionLinks( $plugin_actions, $plugin_file ): array {
 		return $plugin_actions;
 	}
 }
