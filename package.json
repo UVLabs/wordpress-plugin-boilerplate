@@ -29,7 +29,11 @@
       "distDir": "./assets/admin/js/build/"
     }
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "browserslist": [
+    "> 0.5%",
+    "last 4 versions",
+    "not dead"
+  ],
   "outputFormat": "global",
   "repository": {
     "type": "git",

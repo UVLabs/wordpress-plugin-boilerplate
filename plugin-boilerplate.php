@@ -32,6 +32,10 @@ if ( ! defined( 'PREFIX_VERSION' ) ) {
 	define( 'PREFIX_VERSION', '1.0.0' );
 }
 
+if ( ! defined( 'PREFIX_DB_VERSION' ) ) {
+	define( 'PREFIX_DB_VERSION', '1.0.' );
+}
+
 /**
  * Check PHP version
  */
