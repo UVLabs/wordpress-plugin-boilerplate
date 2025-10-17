@@ -43,6 +43,7 @@ class RootActivator {
 
 		$installed_at = get_option( 'prefix_installed_at_version' );
 		$install_date = get_option( 'prefix_first_install_date' );
+		$db_version   = get_option( 'prefix_db_version' );
 
 		// Create date timestamp when plugin was first installed.
 		if ( empty( $install_date ) ) {
@@ -52,6 +53,11 @@ class RootActivator {
 		// Create entry for plugin first install version.
 		if ( empty( $installed_at ) ) {
 			add_option( 'prefix_installed_at_version', PREFIX_VERSION, '', false );
+		}
+
+		// Create db version.
+		if ( empty( $db_version ) ) {
+			add_option( 'prefix_db_version', PREFIX_DB_VERSION, '', false );
 		}
 	}
 }
