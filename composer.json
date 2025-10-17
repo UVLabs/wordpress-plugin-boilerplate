@@ -13,7 +13,8 @@
             "@namespace-dependencies"
         ],
         "post-update-cmd": [
-            "@namespace-dependencies"
+            "@namespace-dependencies",
+            "composer dumpautoload"
         ]
     },
     "require-dev": {
