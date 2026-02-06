@@ -47,7 +47,7 @@ class RootActivator {
 
 		// Create date timestamp when plugin was first installed.
 		if ( empty( $install_date ) ) {
-			add_option( 'prefix_first_install_date', time(), '', 'yes' );
+			add_option( 'prefix_first_install_date', time(), '', 'on' );
 		}
 
 		// Create entry for plugin first install version.
