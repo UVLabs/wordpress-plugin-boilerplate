@@ -25,7 +25,7 @@ There might be more replacements to be done to get all placeholder text changed 
 
 - Replace '_suffix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
 
-- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case-sensitive)
+- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the separation example `my-plugin-` (exact match [whole word], case-sensitive)
 
 - Rename `RootActivator` and `RootDeactivator` class files inside `includes` folder with the plugin name example `MyAwesomePluginActivator` and `MyAwesomePluginDeactivator`
 
