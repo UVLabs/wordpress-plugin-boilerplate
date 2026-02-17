@@ -83,7 +83,7 @@ if ( ! function_exists( 'activate_suffix' ) ) {
 	 *
 	 * @return void
 	 */
-	function activate_suffix() {
+	function activate_suffix(): void {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/RootActivator.php';
 		\Root\RootActivator::activate();
 	}
@@ -95,7 +95,7 @@ if ( ! function_exists( 'deactivate_suffix' ) ) {
 	 *
 	 * @return void
 	 */
-	function deactivate_suffix() {
+	function deactivate_suffix(): void {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/RootDeactivator.php';
 		\Root\RootDeactivator::deactivate();
 	}
@@ -127,7 +127,7 @@ if ( ! function_exists( 'prefix_init' ) ) {
 	 * @return void
 	 * @since 1.0.0
 	 */
-	function prefix_init() {
+	function prefix_init(): void {
 		$plugin_instance = \Root\Bootstrap\Main::getInstance();
 		$plugin_instance->run();
 	}
