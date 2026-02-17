@@ -9,15 +9,6 @@ There might be more replacements to be done to get all placeholder text changed 
 
 ### Steps
 
-#### Composer
-
-Run `composer install`
-
-#### NPM
-
-- Add relevant info to package.json
-- Run `npm install`
-
 #### Replacements:
 
 #### Search and replaces (ALL SEARCHES SHOULD BE CASE SENSITIVE):
@@ -30,11 +21,11 @@ Run `composer install`
 
 - Replace 'PREFIX' with a prefix for constants (loose match, case-sensitive)
 
-- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the sparation example `my_plugin_` (loose match, case-sensitive)
+- Replace 'prefix_' with a lowercase version of the plugin name example `myplugin_` etc. USE UNDERSCORES for the separation example `my_plugin_` (loose match, case-sensitive)
 
 - Replace '_suffix' with lowercase version of plugin name example `_my_plugin` (loose match, case sensitive)
 
-- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the sparation example `my-plugin-` (exact match [whole word], case-sensitive)
+- Replace 'prefix-' with a lowercase version of the plugin name example `myplugin-` etc. USE DASHES for the separation example `my-plugin-` (exact match [whole word], case-sensitive)
 
 - Rename `RootActivator` and `RootDeactivator` class files inside `includes` folder with the plugin name example `MyAwesomePluginActivator` and `MyAwesomePluginDeactivator`
 
@@ -43,8 +34,6 @@ Run `composer install`
 - Replace 'prefix' in file name for your asset files located in `/assets` with a lowercase version of the plugin name, example `myplugin`. USE DASHES for the separation example `my-plugin-`
 
 - Open `dist.sh` in the `bin` folder and replace prefix.zip with the name for your dist file that will be created when you run `composer dist` example `myplugin.zip`
-
-You need to run `composer dumpautoload` after making this change to refresh autoload file with correct details.
 
 - Replace 'plugin_author_name' with your name, (exact match [whole word])
 
@@ -55,6 +44,15 @@ You need to run `composer dumpautoload` after making this change to refresh auto
 - Rename plugin-boilerplate.php in the root folder of the plugin with your actual plugin name. Example `my-awesome-plugin.php`
 
 - Replace `SL_DEV_DEBUGGING` with a constant of your choice. This constant should be defined as true in your local wp install's `wp-config.php` file where you work on the plugin. It is used to set the plugin's main debug constant as true and loads the unminified JS of the plugin while working in your local environment. 
+
+#### Composer
+
+Run `composer install`
+
+#### NPM
+
+- Add relevant info to package.json
+- Run `npm install`
 
 ### Note
 

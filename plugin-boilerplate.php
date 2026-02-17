@@ -33,7 +33,7 @@ if ( ! defined( 'PREFIX_VERSION' ) ) {
 }
 
 if ( ! defined( 'PREFIX_DB_VERSION' ) ) {
-	define( 'PREFIX_DB_VERSION', '1.0.' );
+	define( 'PREFIX_DB_VERSION', '1.0.0' );
 }
 
 /**
