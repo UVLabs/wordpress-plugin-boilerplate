@@ -10,3 +10,4 @@ vendor
 vendor-prefixed
 assets/admin/js/build/
 assets/public/js/build/
+bin/strauss.phar
