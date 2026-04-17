@@ -29,7 +29,7 @@ class Loader {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function loadNotices() {
+	public function loadNotices(): void {
 		if ( get_current_user_id() !== 1 ) { // Show only to main admin.
 			return;
 		}
