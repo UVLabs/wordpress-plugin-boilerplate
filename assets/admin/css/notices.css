@@ -1,0 +1,149 @@
+/* Base Notice Styles */
+.prefix-admin-notice {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px 20px 20px 0;
+    padding: 20px;
+    position: relative;
+    border-radius: 4px;
+    border-left: 4px solid #2271b1;
+    box-sizing: border-box;
+}
+
+/* Logo Section */
+.prefix-notice-logo {
+    flex-shrink: 0;
+    width: 100px;
+    height: 110px;
+    background-image: url("../../admin/img/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Content Section */
+.prefix-notice-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.prefix-notice-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1d2327;
+    line-height: 1.4;
+}
+
+.prefix-notice-body {
+    font-size: 14px;
+    color: #50575e;
+    line-height: 1.6;
+}
+
+.prefix-notice-body > p {
+    font-size: 16px;
+    margin: 0 0 16px 0;
+}
+
+.prefix-notice-body > p:last-of-type {
+    margin-bottom: 16px;
+}
+
+/* Actions Section */
+.prefix-notice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Button Styles */
+.prefix-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    line-height: 1;
+    border: none;
+    box-sizing: border-box;
+}
+
+.prefix-button .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Primary Button */
+.prefix-button-primary {
+    background: #00a0d2;
+    color: #ffffff !important;
+}
+
+/* Dismiss Button */
+.prefix-button-dismiss {
+    background: #646970;
+    color: #ffffff !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .prefix-admin-notice {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .prefix-notice-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .prefix-notice-title {
+        font-size: 16px;
+    }
+
+    .prefix-notice-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .prefix-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .prefix-admin-notice {
+        gap: 12px;
+    }
+}
+
+/* Focus Styles for Accessibility */
+.prefix-button:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    .prefix-admin-notice {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .prefix-notice-actions {
+        display: none;
+    }
+}
