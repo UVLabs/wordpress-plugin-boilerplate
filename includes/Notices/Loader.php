@@ -33,7 +33,8 @@ class Loader {
 		if ( get_current_user_id() !== 1 ) { // Show only to main admin.
 			return;
 		}
-		( new UpsellsNotices() );
-		( new ReviewNotices() );
+		// ( new UpsellsNotices() );
+		// ( new ReviewNotices() );
+		// ( new AdminNotices() );
 	}
 }
