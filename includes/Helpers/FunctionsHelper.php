@@ -43,8 +43,7 @@ class FunctionsHelper {
 			}
 		}
 
-		$tags = implode( '</script>', $parts ); // Bring everything back together
-
-		return $tags;
+		// Bring everything back together.
+		return implode( '</script>', $parts );
 	}
 }
