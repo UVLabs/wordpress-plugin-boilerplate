@@ -69,6 +69,7 @@ class AdminEnqueues {
 	 */
 	public function enqueueStyles() {
 		wp_enqueue_style( $this->plugin_name, PREFIX_PLUGIN_ASSETS_PATH_URL . 'admin/css/prefix-admin.css', array(), $this->version . $this->maybe_burst_cache, 'all' );
+		wp_enqueue_style( $this->plugin_name . 'notices-css', PREFIX_PLUGIN_ASSETS_PATH_URL . 'admin/css/notices.css', array(), $this->version, 'all' );
 	}
 
 	/**

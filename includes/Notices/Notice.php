@@ -58,10 +58,11 @@ class Notice {
 	 * Create the markup for a notice
 	 *
 	 * @param string $notice_id The ID of the particular notice.
-	 * @param array  $content The content to add to the notice.
-	 * @return string
+	 * @param array  $content   The content to add to the notice.
+	 *
+	 * @return void
 	 */
-	protected function createNoticeMarkup( string $notice_id, array $content ) {
+	protected function createNoticeMarkup( string $notice_id, array $content ): void {
 
 		// Only show the Notice to Admins.
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -83,19 +84,38 @@ class Notice {
 		$dismiss_url  = $this->createDismissUrl( $notice_id );
 		$dismiss_text = __( 'Dismiss', 'text-domain' );
 		?>
-			<!-- TODO Add styles for this notice logo -->
-			<div class="update-nag prefix-admin-notice" data-notice-title="<?php echo esc_attr( $title ); ?>">
-			<div class="prefix-notice-logo"></div> 
-			<p class="prefix-notice-title"><?php echo esc_html( $title ); ?></p> 
-			<p class="prefix-notice-body"><?php echo esc_html( $body ); ?></p>
-			<ul class="prefix-notice-body">
-			<?php if ( ! empty( $learn_more_link ) ) { ?>
-				<li id='prefix-notice-cta'><a target='_blank' href='<?php echo esc_url( $learn_more_link ); ?>' style='color: #2b4fa3'><span class='dashicons dashicons-share-alt2'></span><?php echo esc_html( $cta_text ); ?></a></li>
-			<?php } ?>
-			<li id="prefix-notice-dismiss"><a href="<?php echo esc_attr( $dismiss_url ); ?>" style="color: #2b4fa3"> <span class="dashicons dashicons-dismiss"></span><?php echo esc_html( $dismiss_text ); ?></a></li>
-			</ul>
-			</div>
 
+	<div class="prefix-admin-notice" role="alert">
+		<div class="prefix-notice-logo" aria-hidden="true"></div>
+
+		<div class="prefix-notice-content">
+		<p class="prefix-notice-title"><?php echo esc_html( $title ); ?></p>
+
+		<div class="prefix-notice-body">
+			<p><?php echo wp_kses_post( $body ); ?></p>
+
+			<div class="prefix-notice-actions">
+			<?php if ( ! empty( $learn_more_link ) ) { ?>
+				<a href="<?php echo esc_url( $learn_more_link ); ?>"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="prefix-button prefix-button-primary"
+				id="prefix-notice-cta">
+				<?php echo esc_html( $cta_text ); ?>
+				<span class="dashicons dashicons-external" aria-hidden="true"></span>
+				</a>
+			<?php } ?>
+
+			<a href="<?php echo esc_url( $dismiss_url ); ?>"
+				class="prefix-button prefix-button-dismiss"
+				id="prefix-notice-dismiss">
+				<span class="dashicons dashicons-dismiss" aria-hidden="true"></span>
+				<?php echo esc_html( $dismiss_text ); ?>
+			</a>
+			</div>
+		</div>
+		</div>
+	</div>
 		<?php
 	}
 

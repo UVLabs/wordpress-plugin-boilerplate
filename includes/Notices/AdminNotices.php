@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Notices.
+ * AdminNotices Notices.
  *
  * Houses all the notices to show in admin dashboard.
  *
@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Admin notices class.
+ * AdminNotices notices class.
  *
  * @package Root\Notices
  */
-class Admin {
+class AdminNotices {
 
 	/**
 	 * Detect if site has HTTPS support.
