@@ -57,7 +57,7 @@ class FrontendEnqueues {
 	 * @var string|int
 	 * @since 1.0.0
 	 */
-	private string|int $maybe_burst_cache;
+	private $maybe_burst_cache;
 
 	/**
 	 * Initialize the class and set its properties.
