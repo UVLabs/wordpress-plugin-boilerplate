@@ -30,9 +30,10 @@ class Loader {
 	 * @return void
 	 */
 	public function loadNotices(): void {
-		if ( get_current_user_id() !== 1 ) { // Show only to main admin.
-			return;
-		}
+        // Admins only
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
 		// ( new UpsellsNotices() );
 		// ( new ReviewNotices() );
 		// ( new AdminNotices() );

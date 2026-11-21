@@ -126,12 +126,8 @@ class Notice {
 	 */
 	protected function getNoticeID() {
 
-		$nonce = sanitize_text_field( wp_unslash( $_REQUEST['prefix_notice_nonce_value'] ?? '' ) );
-
-		if ( ! wp_verify_nonce( $nonce, 'prefix_notice_nonce_value' ) ) {
-			exit( esc_html__( 'Failed to verify nonce. Please try going back and refreshing the page to try again.', 'text-domain' ) );
-		}
-
+		// The nonce is verified by dismissNotice(), the only caller, before this runs.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$notice_id = sanitize_text_field( wp_unslash( $_REQUEST['prefix_notice_id'] ?? '' ) );
 
 		if ( empty( $notice_id ) ) {

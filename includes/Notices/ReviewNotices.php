@@ -21,7 +21,7 @@ use Root\Notices\Notice;
 use Root\Traits\PluginInfo;
 
 /**
- * Class UpsellsNotices.
+ * Class ReviewNotices.
  */
 class ReviewNotices extends Notice {
 
