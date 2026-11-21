@@ -22,6 +22,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires PHP: 7.4
  * Text Domain:       text-domain
+ * Domain Path:       /languages
  */
 
 if ( ! defined( 'WPINC' ) ) {

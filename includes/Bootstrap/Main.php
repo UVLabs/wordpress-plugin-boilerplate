@@ -134,8 +134,9 @@ class Main {
 	 * @access   private
 	 */
 	private function setLocale(): void {
-		$plugin_i18n = new I18n();
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'loadPluginTextdomain' );
+		// Main is built on "init" (or during "plugins_loaded"), so a hook on plugins_loaded
+		// added here would never run. Register the languages folder now instead.
+		( new I18n() )->loadPluginTextdomain();
 	}
 
 	/**
