@@ -39,12 +39,15 @@ class I18n {
 	 *
 	 * @since    1.0.0
 	 */
-	public function loadPluginTextdomain() {
+	public function loadPluginTextdomain(): void {
+		// This file is in includes/Bootstrap/, so three dirname() calls reach the plugin folder.
+		// WordPress 6.7+ also registers the "Domain Path" header itself; this call covers older
+		// versions for translations shipped in the plugin's languages folder.
 
 		load_plugin_textdomain(
 			'text-domain',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname( dirname( dirname( plugin_basename( __FILE__ ) ) ) ) . '/languages/'
 		);
 	}
 }
