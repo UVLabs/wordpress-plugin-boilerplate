@@ -4,6 +4,7 @@
 .DS_Store
 .distignore
 .gitignore
+.gitkeep
 .husky
 .prettierignore
 .prettierrc.json

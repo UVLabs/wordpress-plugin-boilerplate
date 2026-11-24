@@ -10,6 +10,8 @@
  * @package Uninstall
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+// WordPress defines this constant only while it is deleting the plugin. Checking it (instead
+// of ABSPATH) means this file can't run any other way, such as being loaded directly.
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
