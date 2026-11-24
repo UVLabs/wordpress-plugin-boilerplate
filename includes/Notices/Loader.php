@@ -30,10 +30,10 @@ class Loader {
 	 * @return void
 	 */
 	public function loadNotices(): void {
-        // Admins only
-        if ( ! current_user_can( 'manage_options' ) ) {
-            return;
-        }
+		// Admins only
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
 		// ( new UpsellsNotices() );
 		// ( new ReviewNotices() );
 		// ( new AdminNotices() );
