@@ -36,7 +36,7 @@ PLUGIN_FOLDER="prefix"
 rsync -acvP --delete --exclude-from=".distignore" ./ "./dist/${PLUGIN_FOLDER}"
 
 #Change to our dist folder and zip to artifact folder
-(cd dist && zip -r ../artifact/prefix.zip "${PLUGIN_FOLDER}")
+(cd dist && zip -r "../artifact/${PLUGIN_FOLDER}.zip" "${PLUGIN_FOLDER}")
 
 # Delete dist folder
 rm -rf dist
