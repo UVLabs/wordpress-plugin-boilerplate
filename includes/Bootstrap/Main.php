@@ -95,7 +95,7 @@ class Main {
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
+	 * Load the dependencies and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
 	 * @since    1.0.0
@@ -106,7 +106,6 @@ class Main {
 		$this->plugin_name = PREFIX_PLUGIN_NAME;
 
 		$this->loadDependencies();
-		$this->setLocale();
 		$this->defineAdminHooks();
 		$this->definePublicHooks();
 	}
@@ -122,21 +121,6 @@ class Main {
 	 */
 	private function loadDependencies(): void {
 		$this->loader = new Loader();
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function setLocale(): void {
-		// Main is built on "init" (or during "plugins_loaded"), so a hook on plugins_loaded
-		// added here would never run. Register the languages folder now instead.
-		( new I18n() )->loadPluginTextdomain();
 	}
 
 	/**
